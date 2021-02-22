@@ -1,0 +1,3506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home Page</title>
+	<!-- Material Design Lite -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> -->
+	<!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-orange.min.css" /> -->
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-orange.min.css" />
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+	<!-- MDL extra -->
+	<link rel="stylesheet" href="extra/material.components.ext.min.css">
+	<!-- Jquery CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Bootstrap modal -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- DT -->
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.material.min.js"></script>  
+	<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.foundation.min.css" />
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+	<!-- swal -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- Custome Design lite -->
+	<link rel="stylesheet" href="styles.css">
+	<!-- Date picker -->
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https://resources/demos/style.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- System icon -->
+	<link rel="icon" href="images/firebase_logo.png">
+	<style>
+	#view-source {
+	  position: fixed;
+	  display: block;
+	  right: 0;
+	  bottom: 0;
+	  margin-right: 40px;
+	  margin-bottom: 40px;
+	  z-index: 900;
+	}
+	a:hover{
+	    color: inherit; /* Inherits color property from its parent */
+	}
+	a{
+		text-decoration: none !important;
+	}
+	@font-face {
+	    font-family: Roboto-Medium;
+	    src: url(RobotoTTF/Roboto-Medium.ttf);
+	}
+	@font-face {
+	    font-family: Roboto-Light;
+	    src: url(RobotoTTF/Roboto-Light.ttf);
+	}
+	@font-face {
+	    font-family: Roboto-Regular;
+	    src: url(RobotoTTF/Roboto-Regular.ttf);
+	}
+	@font-face {
+	    font-family: Roboto-Bold;
+	    src: url(RobotoTTF/Roboto-Bold.ttf);
+	}
+	td {
+		text-overflow: ellipsis; 
+		white-space: nowrap; 
+		overflow: hidden;
+	}
+	
+	#login_cover{
+		background: #fff;
+		position: fixed; 
+		top: 0; 
+		left: 0; 
+		width: 100%; 
+		height: 100vh; 
+		z-index: 800;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+
+	#loading_submit{
+		display: none;
+	}
+
+	.image_style {
+		border-radius: 5px;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+		border-radius: 5px;
+		-webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+		transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+	}
+	.mdl-file--floating-label{
+		margin-top: -10px;
+	}
+
+	#loading{
+		position: fixed;
+		top:0;
+		bottom: 0;	
+		left: 0;
+		right: 0;
+		margin: auto;
+		display: none;
+	}
+
+	#loading_modal{
+		position: fixed;
+		top:0;
+		bottom: 0;	
+		left: 0;
+		right: 0;
+		margin: auto;
+		display: none;
+	}
+
+	#loading_modal2{
+		position: fixed;
+		top:0;
+		bottom: 0;	
+		left: 0;
+		right: 0;
+		margin: auto;
+		display: none;
+	}
+
+	.image {
+	  border-radius: 5px;
+	  cursor: pointer;
+	  transition: 0.3s;
+	}
+
+	.buttonsToHide {
+		display: none;
+	}
+
+	.image:hover {opacity: 0.7;}
+
+	/* The Modal (background) */
+	.modal_imahe {
+	    display: none; /* Hidden by default */
+	    position: fixed; /* Stay in place */
+	    z-index: 1000; /* Sit on top */
+	    padding-top: 100px; /* Location of the box */
+	    left: 0;
+	    top: 0;
+	    width: 100%; /* Full width */
+	    height: 100%; /* Full height */
+	    overflow: auto; /* Enable scroll if needed */
+	    background-color: rgb(0,0,0); /* Fallback color */
+	    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+	}
+
+	/* Modal Content (image) */
+	.modal-content-image {
+	    margin: auto;
+	    display: block;
+	    width: 80%;
+	    max-width: 500px;
+	}
+
+	/* Caption of Modal Image */
+	#caption {
+	    margin: auto;
+	    display: block;
+	    width: 80%;
+	    max-width: 700px;
+	    text-align: center;
+	    color: #ccc;
+	    padding: 10px 0;
+	    height: 150px;
+	}
+
+	/* Add Animation */
+	.modal-content-image, #caption {    
+	    -webkit-animation-name: zoom;
+	    -webkit-animation-duration: 0.6s;
+	    animation-name: zoom;
+	    animation-duration: 0.6s;
+	}
+
+	@-webkit-keyframes zoom {
+	    from {-webkit-transform:scale(0)} 
+	    to {-webkit-transform:scale(1)}
+	}
+
+	@keyframes zoom {
+	    from {transform:scale(0)} 
+	    to {transform:scale(1)}
+	}
+
+	/* The Close Button */
+	.close_image {
+	    position: absolute;
+	    top: 15px;
+	    right: 35px;
+	    color: #f1f1f1;
+	    font-size: 40px;
+	    font-weight: bold;
+	    transition: 0.3s;
+	}
+
+	.close_image:hover,
+	.close_image:focus {
+	    color: #bbb;
+	    text-decoration: none;
+	    cursor: pointer;
+	}
+	#forgot_pass:hover,
+	#forgot_pass:focus {
+		color: #bbb;
+		cursor: pointer;
+	}
+
+	/* 100% Image Width on Smaller Screens */
+	@media only screen and (max-width: 700px){
+	    .modal-content-image {
+	        width: 100%;
+	    }
+	}
+
+	.review_container {
+	  display:flex;
+	  max-width: 500px;
+	  padding-top: 12px;
+	  padding-bottom: 12px;
+	  padding-left: 24px;
+	  padding-right: 24px;
+	}
+
+	.fixed{
+	    width: 70px;
+	}
+
+	.flex-item{
+	    flex-grow: 1;
+	}
+
+	.review_container:hover {
+	    background: #999;
+	    cursor: pointer;
+	    opacity: 0.9;
+	}
+
+	</style>
+
+</head>
+<body>
+	<!-- Login Page -->
+	<div id="login_cover">
+		<div class="mdl-spinner mdl-js-spinner is-active" style="height: 70px; width: 70px;"></div>
+	</div>
+
+	<dialog id="login_dialog" class="mdl-dialog" style="border-radius: 20px;">
+		<h2 class="mdl-dialog__title">Go Negosyo</h2>
+	    <div class="mdl-dialog__content">
+	    	<p id="showError" style="color: red;"></p>
+	    	<form id="login_form">
+	    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="emailTextField">
+	    			<input class="mdl-textfield__input" type="email" id="email">
+	    			<label class="mdl-textfield__label" for="email" style="margin-top: -8px;"><i class="material-icons">email</i> Email</label>
+	    			<span class="mdl-textfield__error">Input is not a email!</span>
+	    		</div>
+	    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-top: 7px;" id="passwordTextField">
+	    			<input class="mdl-textfield__input" type="password" id="password">
+	    			<label class="mdl-textfield__label" for="password" style="margin-top: -10px;"><i class="material-icons">lock</i> Password</label>
+	    		</div>
+	    	</form>
+	    	<p id="forgot_pass"><b>Forgot Password</b></p>
+	    </div>
+	    <div class="mdl-dialog__actions">
+	    	<button id="login_btn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--primary mdl-js-ripple-effect">Login <i class="material-icons">forward</i></button>
+	    	<div id="loading_submit" class="mdl-spinner mdl-js-spinner is-active"></div>
+	    </div>
+	</dialog>
+
+	<!-- Admin Page -->
+
+	<div class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+				<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+				</div>
+				<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+					<img class="image_style" src="images/dti.png" width="150" height="150" style="background-color: white; padding: 25px;">
+					<h2 style="margin-left: 30px; font-family: Roboto-Regular">DTI ADMIN <!-- <i class="material-icons">bubble_chart</i> --></h2>
+				</div>
+				<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+				</div>
+				<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+					<a href="#inventory" class="mdl-layout__tab is-active" id="inventory_tab">Inventory</a>
+					<a href="#purchase" class="mdl-layout__tab" id="po_tab">Purchase Orders</a>
+					<a href="#item" class="mdl-layout__tab" id="item_tab">Products</a>
+					<a href="#price" class="mdl-layout__tab" id="price_tab">Price</a>
+					<!-- <a href="#supplier" class="mdl-layout__tab" id="supplier_tab">Suppliers</a> -->
+					<a href="#announcements" class="mdl-layout__tab" id="announcement_tab">Announcements</a>
+					<a href="#transaction" class="mdl-layout__tab" id="transaction_tab">SALES ORDER</a>
+					<a href="#business" class="mdl-layout__tab" id="business_tab"><span id="notif_count" class="mdl-badge" data-badge="0"></span>MSME</a>
+					<div class="mdl-layout-spacer"></div>
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" id="logout" style="margin-right: 20px; margin-top: 13px;">
+						LOGOUT <i class="material-icons">power_settings_new</i>
+					</button>
+					<div id="circle_addBtn" style="display: none;">
+						<input type="hidden" id="modal_status">
+						<button style="margin-right: 120px;" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
+							<i class="material-icons" role="presentation">add</i><span class="visuallyhidden">Add</span>
+						</button>
+					</div>
+					
+				</div>
+			</header>
+			<main class="mdl-layout__content">
+				<!-- INVENTORY -->
+				<div class="mdl-layout__tab-panel mdl-color--grey-50 is-active" id="inventory">
+					<section class="section--center mdl-grid mdl-grid--no-spacing">
+						<table id="inventory_table" style="width: 100%; table-layout: fixed; font-family: Roboto-Medium;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+							<thead>
+								<tr>
+									<th width="24%" class="mdl-data-table__cell--non-numeric">PRODUCT</th>
+									<th width="14%" class="mdl-data-table__cell--non-numeric">IMAGE</th>
+									<th width="16%">ON-HAND</th>
+									<th width="15%">DEMAND</th>
+									<th width="15%">AVAILABLE</th>
+									<th width="16%">ON-ORDERED</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+
+						<div style="display: none;">
+							<table id="shortage_table" style="width: 100%; table-layout: fixed; font-family: Roboto-Medium;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+								<thead>
+									<tr>
+										<th width="33%" class="mdl-data-table__cell--non-numeric">PRODUCT</th>
+										<th width="33%" class="mdl-data-table__cell--non-numeric">IMAGE</th>
+										<th width="33%">ON-HAND</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+						
+					</section>
+				</div>
+				<!-- TRANSACTION -->
+				<div class="mdl-layout__tab-panel mdl-color--grey-50" id="transaction">
+					<section class="section--center mdl-grid mdl-grid--no-spacing">
+						<center><button id="new_so" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-right: 10px;">
+						  NEW SALES ORDER 
+						</button><input type="text" placeholder="From: " id="from_datepicker_so"><input type="text" placeholder="To: " id="to_datepicker_so" style="margin-left: 20px;"><button style="margin-left: 10px;" id="so_date_apply">APPLY</button></center>
+						<h3 style="margin-left: 24px;">Total Sales: <span id="total_sales_text"></span></h3>
+						<table id="transaction_table" style="width: 100%; table-layout: fixed; font-family: Roboto-Medium;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+							<thead>
+								<tr>
+									<th width="25%" class="mdl-data-table__cell--non-numeric">RECIEPT ID</th>
+									<th width="25%" class="mdl-data-table__cell--non-numeric">ORDER DATE</th>
+									<th width="15%">NO OF ITEMS</th>
+									<th width="20%">TOTAL PRICE</th>
+									<th width="15%" class="mdl-data-table__cell--non-numeric">PRINT</th>
+								</tr>
+							</thead>
+							<tbody>
+
+							</tbody>
+						</table>
+					</section>
+				</div>
+				<!-- PO BEGIN -->
+				<div class="mdl-layout__tab-panel mdl-color--grey-50" id="purchase">
+					<section class="section--center mdl-grid mdl-grid--no-spacing">
+						<center><button id="new_po" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-right: 10px;">
+						  NEW PURCHASE ORDER 
+						</button><input type="text" placeholder="From: " id="from_datepicker"><input type="text" placeholder="To: " id="to_datepicker" style="margin-left: 10px;"><button style="margin-left: 10px;" id="po_date_apply">APPLY</button></center><br><br><br>
+						<table id="purchase_table" style="width: 100%; table-layout: fixed; font-family: Roboto-Medium;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+							<thead>
+								<tr>
+									<th width="23%" class="mdl-data-table__cell--non-numeric">ORDER DATE</th>
+									<th width="26%" class="mdl-data-table__cell--non-numeric">DELIVERY DATE</th>
+									<th width="36%" class="mdl-data-table__cell--non-numeric">MSME</th>
+									<th width="1%" class="mdl-data-table__cell--non-numeric">CURRENCY</th>
+									<th width="9%" class="mdl-data-table__cell--non-numeric">STATUS</th>
+									<th width="1%" class="mdl-data-table__cell--non-numeric">PRINT</th>
+									<th width="4%" class="mdl-data-table__cell--non-numeric">RECIEVE</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</section>
+				</div>
+				<!-- PO END -->
+				<!-- ITEMS BEGIN -->
+				<div class="mdl-layout__tab-panel mdl-color--grey-50" id="item">
+					<section class="section--center mdl-grid mdl-grid--no-spacing">
+						<!-- Tooltip -->
+						<div class="mdl-tooltip mdl-tooltip--bottom mdl-tooltip--large" data-mdl-for="add">Add a New Item</div>
+						<div class="mdl-tooltip mdl-tooltip--bottom mdl-tooltip--small" data-mdl-for="editTh">Edit item</div>
+						<div class="mdl-tooltip mdl-tooltip--bottom mdl-tooltip--small" data-mdl-for="deleteTh">Delete item</div>
+
+						<table id="item_table" style="width: 100%; table-layout: fixed; font-family: Roboto-Medium;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+							<thead>
+								<tr>
+									<th width="15%" class="mdl-data-table__cell--non-numeric">PRODUCT</th>
+									<th width="15%" class="mdl-data-table__cell--non-numeric">IMAGE</th>
+									<th width="15%" class="mdl-data-table__cell--non-numeric">CATEGORY</th>
+									<th width="20%" class="mdl-data-table__cell--non-numeric">DESCRIPTION</th>
+									<th width="25%" class="mdl-data-table__cell--non-numeric">MSME</th>
+									<th width="5%" id="editTh"><i class="material-icons" id="update_icon">border_color</i></th>
+									<th width="5%" id="deleteTh"><i class="material-icons" id="delete_icon">delete</i></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</section>
+					
+				</div>
+				<div class="mdl-spinner mdl-js-spinner is-active" id="loading"></div>
+				<!-- ITEMS END -->
+				<!-- PRICE BEGIN -->
+				<div class="mdl-layout__tab-panel mdl-color--grey-50" id="price">
+					<section class="section--center mdl-grid mdl-grid--no-spacing">
+
+						<table id="price_table" style="width: 100%; table-layout: fixed; font-family: Roboto-Medium;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+							<thead>
+								<tr>
+									<th width="30%" class="mdl-data-table__cell--non-numeric">PRODUCT</th>
+									<th width="25%" class="mdl-data-table__cell--non-numeric">IMAGE</th>
+									<th width="15%">CATEGORY</th>
+									<th width="15%">UNIT PRICE</th>
+									<th width="10%" class="mdl-data-table__cell--non-numeric">SET PRICE</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+
+					</section>
+				
+				</div>
+				<!-- PRICE END -->
+				<!-- SUPPLIER BEGIN -->
+				<div class="mdl-layout__tab-panel mdl-color--grey-50" id="supplier">
+					<section class="section--center mdl-grid mdl-grid--no-spacing">
+						<div class="mdl-tooltip mdl-tooltip--bottom mdl-tooltip--large" data-mdl-for="add">Add a New Supplier</div>
+						<div class="mdl-tooltip mdl-tooltip--bottom mdl-tooltip--small" data-mdl-for="editTh2">Edit item</div>
+						<div class="mdl-tooltip mdl-tooltip--bottom mdl-tooltip--small" data-mdl-for="deleteTh2">Delete item</div>
+						<table id="supplier_table" style="width: 100%; table-layout: fixed; font-family: Roboto-Medium;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+							<thead>
+								<tr>
+									<th width="30%" class="mdl-data-table__cell--non-numeric">SUPPLIER NAME</th>
+									<th width="40%" class="mdl-data-table__cell--non-numeric">SUPPLIER ADDRESS</th>
+									<th width="10%">SUPPLIER CONTACT</th>
+									<th id="editTh2" width="10%"><i class="material-icons" id="update_icon">border_color</i></th>
+									<th id="deleteTh2" width="10%"><i class="material-icons" id="delete_icon">delete</i></th>
+								</tr>
+							</thead>
+						</table>
+					</section>
+				</div>
+				<!-- ANNOUNCEMENTS START -->
+				<div class="mdl-layout__tab-panel mdl-color--grey-50" id="announcements">
+					<center>
+						<div class="mdl-spinner mdl-js-spinner is-active" id="announcement_loading" style="width: 90px; height: 90px;"></div>
+						<button class="mdl-button mdl-js-button mdl-button--accent" id="new_announcement">NEW ANNOUNCEMENTS</button>
+					</center>
+
+					<section class="section--center mdl-grid mdl-grid--no-spacing">
+						<div id="announcement_container">
+						</div>			
+					</section>
+				</div>
+				<!-- ANNOUNCEMENTS END -->
+				<!-- SUPPLIER END -->
+				<!-- BUSINESSES -->
+				<div class="mdl-layout__tab-panel mdl-color--grey-50" id="business">
+					<section class="section--center mdl-grid mdl-grid--no-spacing">
+						<table id="business_table" style="width: 100%; table-layout: fixed; font-family: Roboto-Medium;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+							<thead>
+								<tr>
+									<th class="mdl-data-table__cell--non-numeric">NAME</th>
+									<th class="mdl-data-table__cell--non-numeric">CREDENTIALS</th>
+									<th class="mdl-data-table__cell--non-numeric">EMAIL</th>
+									<th class="mdl-data-table__cell--non-numeric">PHONE</th>
+									<th class="mdl-data-table__cell--non-numeric">EMAIL VERIFIED</th>
+									<th class="mdl-data-table__cell--non-numeric">ADMIN VERIFIED</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</section>
+				</div>
+			</main>
+		</div>
+	</div>
+
+	<!-- The Modal Image-->
+	<div id="myModal" class="modal_imahe">
+	  <span class="close_image" id="close_haha">&times;</span>
+	  <img class="modal-content-image" id="img01">
+	  <div id="caption"></div>
+	</div>
+
+	<!-- ITEM MODAL -->
+	<div id="modal" class="modal fade" style="font-family: Roboto-Light;">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="mdl-button mdl-js-button mdl-button--icon close" data-dismiss="modal"><i class="material-icons">close</i></button>
+					<h3 class="modal-title item-title" style="font-family: Roboto-Bold;"></h3>
+				</div>
+				<div class="modal-body">
+					<form id="item_form">
+						<input type="hidden" id="item_id">
+						<input type="hidden" id="item_image_extension">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="nameTF">
+							<input class="mdl-textfield__input" type="text" id="item_name">
+							<label class="mdl-textfield__label" for="item_name">Name</label>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth" id="weightTF">
+							<select class="mdl-textfield__input" type="text" id="item_weight" readonly tabIndex="-1">
+							<option value=""></option>
+							<option value="Work/Study">Work/Study</option>
+							<option value="Entertaining">Entertaining</option>
+							<option value="Home/Decor">Home/Decor</option>
+							<option value="Fashion">Fashion</option>
+							<option value="Toys and Gift">Toys and Gift</option>
+							<option value="Food as Gifts">Food as Gifts</option>
+							</select>
+							<label for="item_weight" class="mdl-textfield__label">Product Category</label>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth" id="unitTF">
+							<select class="mdl-textfield__input" type="text" id="item_unit" readonly tabIndex="-1">
+								<option value=""></option>
+								<option value="Kilogram">Kilogram</option>
+								<option value="Gram">Gram</option>
+								<option value="Millimeter">Millimeter</option>
+								<option value="Inches">Inches</option>
+								<option value="Dozen">Dozen</option>
+								<option value="Centimeter">Centimeter</option>
+							</select>
+							<label for="item_unit" class="mdl-textfield__label">Product Unit</label>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="measurementTF">
+							<input class="mdl-textfield__input" type="number" id="item_measurement">
+							<label class="mdl-textfield__label" for="item_measurement">Measurement</label>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth" id="MSMETF">
+							<select class="mdl-textfield__input" type="text" id="msme_select" readonly tabIndex="-1">
+							</select>
+							<label for="msme_select" class="mdl-textfield__label">MSME</label>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="descTF">
+						    <textarea class="mdl-textfield__input" type="text" rows= "3" id="item_desc" ></textarea>
+						    <label class="mdl-textfield__label" for="item_desc">Description</label>
+					 	</div>
+					 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="limitTF">
+							<input class="mdl-textfield__input" type="number" id="item_limit" value="10">
+							<label class="mdl-textfield__label" for="item_limit">Limit Quantity</label>
+						</div>
+					 	<div class="mdl-file mdl-js-file mdl-file--floating-label" id="imageTF">
+					 	    <input type="file" id="item_image">
+					 	    <label class="mdl-file__label image_label" for="item_image">Image</label>
+					 	</div>
+					 	<center><div id="image_container"></div></center>
+					</form>
+				</div>
+				<div class="modal-footer item_footer">
+					<button class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" data-dismiss="modal">CANCEL</button>
+					<button id="item_submit" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"></button>
+				</div>
+				<div class="mdl-spinner mdl-js-spinner is-active" id="loading_modal"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- PRICE MODAL -->
+	<div id="price_modal" class="modal fade" style="font-family: Roboto-Light;">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="mdl-button mdl-js-button mdl-button--icon close" data-dismiss="modal"><i class="material-icons">close</i></button>
+					<h3 class="modal-title price-title" style="font-family: Roboto-Bold;"></h3>
+				</div>
+				<div class="modal-body">
+					<form >
+						<input type="hidden" id="price_item_id">
+						<input type="hidden" id="price_item_name">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="priceTF">
+							<input class="mdl-textfield__input" type="number" id="item_price">
+							<label class="mdl-textfield__label" for="item_price">Item Price (Peso)</label>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" data-dismiss="modal">CANCEL</button>
+					<button id="price_submit" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="announcement_modal" class="modal fade" style="font-family: Roboto-Light;">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="mdl-button mdl-js-button mdl-button--icon close" data-dismiss="modal"><i class="material-icons">close</i></button>
+					<h3 class="modal-title price-title">Announcement</h3>
+				</div>
+				<div class="modal-body">
+					<form id="announcement_form">
+						<div class="mdl-textfield mdl-js-textfield">
+							<input class="mdl-textfield__input" type="text" id="announcement_title">
+							<label class="mdl-textfield__label" for="announcement_title">Title</label>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield" id="value-div">
+                            <textarea class="mdl-textfield__input" type="text" rows="3" id="announcement_text" ></textarea>
+                            <label class="mdl-textfield__label" for="announcement_text">Your announcement</label>
+                        </div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" data-dismiss="modal">CANCEL</button>
+					<button id="announcement_submit" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect">SEND</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- SUPPLIER MODAL -->
+
+	<div id="supplier_modal" class="modal fade" style="font-family: Roboto-Light;">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="mdl-button mdl-js-button mdl-button--icon close" data-dismiss="modal"><i class="material-icons">close</i></button>
+					<h3 class="modal-title supplier-title" style="font-family: Roboto-Bold;"></h3>
+				</div>
+				<div class="modal-body">
+					<form id="supplier_form">
+						<input type="hidden" id="supplier_id">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="supplierNameTF">
+							<input class="mdl-textfield__input" type="text" id="supplier_name">
+							<label class="mdl-textfield__label" for="supplier_name">Supplier Name</label>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="addressTF">
+							<input class="mdl-textfield__input" type="text" id="supplier_address">
+							<label class="mdl-textfield__label" for="supplier_address">Complete Address</label>
+						</div>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="contactTF">
+							<input class="mdl-textfield__input" type="text" id="supplier_contact">
+							<label class="mdl-textfield__label" for="supplier_contact">Contact Number</label>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" data-dismiss="modal">CANCEL</button>
+					<button id="supplier_submit" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect">SAVE</button>
+				</div>
+				<div class="mdl-spinner mdl-js-spinner is-active" id="loading_modal2"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- PO DIALOG -->
+	<dialog id="po_dialog" class="mdl-dialog" style="border-radius: 20px; width: 80%;">
+		<center><h2 class="mdl-dialog__title" style="font-family: Roboto-Bold;">Select Verified MSME</h2></center>
+		<button class="mdl-button mdl-js-button mdl-button--icon close" style="display: inline-block; vertical-align: top; margin-top: -50px;" id="close_po_dialog"><i class="material-icons">close</i></button>
+	    <div class="mdl-dialog__content">
+	    	<table id="po_supplier_table" style="width: 100%; table-layout: fixed; font-family: Roboto-Medium; color: black;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+	    		<thead>
+	    			<tr>
+	    				<th width="30%" class="mdl-data-table__cell--non-numeric">NAME</th>
+	    				<th width="30%" class="mdl-data-table__cell--non-numeric">MSME ADDRESS</th>
+	    				<th width="30%">MSME CONTACT</th>
+	    				<th width="10%">CHOOSE MSME</th>
+	    			</tr>
+	    		</thead>
+	    	</table>
+	    </div>
+	</dialog>
+
+	<!-- PO ITEM DIALOG -->
+
+	<dialog id="po_item_dialog" class="mdl-dialog" style="border-radius: 20px; width: 80%;">
+		<h3 class="mdl-dialog__title" style="display: inline-block; vertical-align: top; font-family: Roboto-Regular;">Selected MSME: <span id="supp_name_name"></span></h3>
+		<h2 style="display: inline-block; vertical-align: top; font-family: Roboto-Bold; margin-right: -70px;">Select Item</h2>
+		<button class="mdl-button mdl-js-button mdl-button--icon close" id="close_po_item_dialog"><i class="material-icons">close</i></button>
+	    <div class="mdl-dialog__content">
+	    	<input type="hidden" id="supp_name">
+	    	<input type="hidden" id="supp_id">;
+	    	<table id="po_item_table" style="width: 100%; table-layout: fixed; font-family: Roboto-Medium; color: black;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+	    		<thead>
+	    			<tr>
+	    				<th width="20%" class="mdl-data-table__cell--non-numeric">PRODUCT</th>
+	    				<th width="25%" class="mdl-data-table__cell--non-numeric">DESCRIPTION</th>
+	    				<th width="15%" class="mdl-data-table__cell--non-numeric">CATEGORY</th>
+	    				<th width="10%">LIMIT</th>
+	    				<th width="10%">UNIT</th>
+	    				<th width="20%">ORDER</th>
+	    			</tr>
+	    		</thead>
+	    	</table>
+	    </div>
+	    <div class="mdl-dialog__actions">
+	    	<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="submit_item_dialog">
+	    	  SUBMIT
+	    	</button>
+	    	<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="back_item_dialog">
+	    	  Back
+	    	</button>
+	    	
+	    </div>
+	</dialog>
+
+	<!-- DTI PRODUCT MODAL -->
+	<div class="modal fade" id="dti_product">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h3 class="modal-title">Pick Product</h3>
+	      </div>
+	      <div class="modal-body">
+	        <table id="solid_table">
+	          <thead>
+	            <tr>
+	              <th>Product Name</th>
+	              <th>Category</th>
+	              <th>On Hand</th>
+	              <th>Price</th>
+	              <th>Pick</th>
+	            </tr>
+	          </thead>
+	          <tbody>
+	          </tbody>
+	        </table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" id="solid_product_back">Back</button>
+	        <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect" id="solid_next">Next</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- QUANITY MODAL -->
+	<div class="modal fade" id="quantity_modal">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h3 class="modal-title">Product Cart</h3>
+	      </div>
+	      <div class="modal-body">
+	        <table style="width: 100%" class="table-hover">
+	          <thead>
+	            <tr>
+	              <th><center>Product Name</center></th>
+	              <th><center>Price</center></th>
+	              <th>Available</th>
+	              <th><center>Quantity</center></th>
+	              <th><center>Remove</center></th>
+	            </tr>
+	          </thead>
+	          <tbody id="quantity_table_body"></tbody>
+	        </table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" id="quantity_back">Back</button>
+	        <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect" id="next_quantity">Next</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- FINISH MODAL -->
+	<div class="modal fade" id="finish_modal">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h3 class="modal-title">Sale Summary For Order No. <span id="so_future_id"></span></h3>
+	      </div>
+	      <div class="modal-body">
+	        <table class="table-hover" style="width: 100%">
+	          <thead>
+	              <th><center>Product Name</center></th>
+	              <th><center>Product Price</center></th>
+	              <th><center>Quantity</center></th>
+	              <th><center>Total</center></th>
+	          </thead>
+	          <tbody id="finish_body"></tbody>
+	        </table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" id="finish_back">Back</button>
+	        <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect" id="finish_next">Proceed to Payment</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- PRINT MODAL -->
+	<div class="modal fade" id="print_modal">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h3 class="modal-title">Reciept</h3>
+	      </div>
+	      <div class="modal-body">
+	        <table class="table-hover" frame="box" rules="none" id="receiptTable" style="width: 100%;">
+	          <thead>
+	            <tr>
+	              <th colspan="4"><h3>Reciept Sales Order</h3></th>
+	            </tr>
+	            <tr><th colspan="4">&nbsp</th></tr>
+	            <tr>
+	              <th colspan="2">Sale Summary For Order NO. <span id="so_id"></span></th>
+	              <th></th>
+	              <th><span id="order_date_date"></span></th>
+	            </tr>
+	            <tr><th colspan="4">&nbsp</th></tr>
+	            <tr>
+	              <th><center>Product Name</center></th>
+	              <th><center>Product Price</center></th>
+	              <th><center>Quantity</center></th>
+	              <th><center>Total</center></th>
+	            </tr>
+	          </thead>
+	          <tbody id="print_body"></tbody>
+	        </table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">Cancel</button>
+	        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" id="print_button">Print</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- RECEIVE MODAL -->
+	<div id="modal_recevie" class="modal fade" style="font-family: Roboto-Light;">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="mdl-button mdl-js-button mdl-button--icon close" data-dismiss="modal"><i class="material-icons">close</i></button>
+					<h3 class="modal-title receive-title" style="font-family: Roboto-Bold;">Receive Order</h3>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" id="po_id_id">
+					<table style="width: 100%; table-layout: fixed; font-family: Roboto-Medium;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+						<thead>
+							<tr>
+								<th class="mdl-data-table__cell--non-numeric">NAME</th>
+								<th class="mdl-data-table__cell--non-numeric">CATEGORY</th>
+								<th class="mdl-data-table__cell--non-numeric">DESCRIPTION</th>
+								<th>QUANTITY ORDERED</th>
+								<th>RECEIVED</th>
+								<th class="mdl-data-table__cell--non-numeric">UNIT</th>
+								<th>DELIVERY QUANTITY</th>
+							</tr>
+						</thead>
+						<tbody id="table_receive_body"></tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">CANCEL</button>
+					<button id="receive_submit" class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect">UPDATE</button>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<!-- PRINT PO DIALOG -->
+	<dialog id="print_po_dialog" class="mdl-dialog" style="border-radius: 20px; width: 80%;">
+		<input type="hidden" id="print_po_id">
+		<input type="hidden" id="po_status">
+		<h3 class="mdl-dialog__title" style="display: inline-block; vertical-align: top;">Purchase Order for <span id="purchase_receipt_id"></span></h3>
+		<button id="print" style="display: inline-block; vertical-align: top; float: right; margin-top: 20px; margin-right: 20px;" class="mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons">print</i> Print</button>
+	    <div class="mdl-dialog__content">
+	    	<table id="print_table" style="width: 100%; table-layout: fixed; font-family: Roboto-Medium; color: black;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+	    		<thead>
+	    			<tr>
+	    				<th class="mdl-data-table__cell--non-numeric">ITEM ID</th>
+	    				<th class="mdl-data-table__cell--non-numeric">ITEM NAME</th>
+	    				<th class="mdl-data-table__cell--non-numeric">CATEGORY</th>
+	    				<th class="mdl-data-table__cell--non-numeric">DESCRIPTION</th>
+	    				<th>QUANTITY</th>
+	    				<th class="mdl-data-table__cell--non-numeric">UNIT</th>
+	    				<th class="mdl-data-table__cell--non-numeric">DATE REQUIRED</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody id="table_purchase_print"></tbody>
+	    	</table>
+	    </div>
+	    <div class="mdl-dialog__actions">
+	    	<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="cancel_print">
+	    	  CANCEL
+	    	</button>
+	    	
+	    </div>
+	</dialog>
+
+	<!-- BUSINESS DETAILS DIALOG -->
+	<dialog id="business_dialog" class="mdl-dialog" style="border-radius: 8px; width: 80%;">
+		<h2 class="mdl-dialog__title" style="font-family: Roboto-Bold;">MSME Form</h2>
+		<button class="mdl-button mdl-js-button mdl-button--icon close" style="display: inline-block; vertical-align: top; margin-top: -50px;" id="close_business_dialog"><i class="material-icons">close</i></button>
+	    <div class="mdl-dialog__content">
+	    	<div style="display: inline;">
+	    		<h3 style="display: inline-block; text-align: center; margin-right: 10px;">Full Name</h3> 
+	    		<h5 style="display: inline-block; text-align: center;" id="full_name"></h5>
+	    	</div><br>
+	    	<div style="display: inline;">
+	    		<h3 style="display: inline-block; text-align: center; margin-right: 10px;">Email Address</h3> 
+	    		<h5 style="display: inline-block; text-align: center;" id="email_address"></h5>
+	    	</div><br>
+	    	<div style="display: inline;">
+	    		<h3 style="display: inline-block; text-align: center; margin-right: 10px;">Business Name</h3> 
+	    		<h5 style="display: inline-block; text-align: center;" id="business_name"></h5>
+	    	</div><br>
+	    	<div style="display: inline;">
+	    		<h3 style="display: inline-block; text-align: center; margin-right: 10px;">Item Name</h3> 
+	    		<h5 style="display: inline-block; text-align: center;" id="item_names"></h5>
+	    	</div><br>
+	    	<div style="display: inline;">
+	    		<h3 style="display: inline-block; text-align: center; margin-right: 10px;">Industry Type</h3> 
+	    		<h5 style="display: inline-block; text-align: center;" id="industry"></h5>
+	    	</div><br>
+	    	<div style="display: inline;">
+	    		<h3 style="display: inline-block; text-align: center; margin-right: 10px;">Phone Number</h3> 
+	    		<h5 style="display: inline-block; text-align: center;" id="phoneNumber"></h5>
+	    	</div><br>
+	    	<div style="display: inline;">
+	    		<h3 style="display: inline-block; text-align: center; margin-right: 10px;">Home Address</h3> 
+	    		<h5 style="display: inline-block; text-align: center;" id="home_address"></h5>
+	    	</div><br>
+	    	<div style="display: inline;">
+	    		<h3 style="display: inline-block; text-align: center; margin-right: 10px;">Province</h3> 
+	    		<h5 style="display: inline-block; text-align: center;" id="province"></h5>
+	    	</div><br>
+	    	<div style="display: inline;">
+	    		<h3 style="display: inline-block; text-align: center; margin-right: 10px;">Date of Birth</h3> 
+	    		<h5 style="display: inline-block; text-align: center;" id="date_birth"></h5>
+	    	</div><br>
+	    	<h3>Credentials</h3> 
+	    	<div style="display: inline;">
+	    		<img class="image" id="image_one" width="130" height="130" />
+	    		<img class="image" id="image_two" width="130" height="130" />
+	    		<img class="image" id="image_three" width="130" height="130" />
+	    	</div>
+	    </div>
+
+	    <input type="hidden" id="hidden_business_id">
+
+	    <div class="mdl-dialog__actions">
+	    	<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="business_dialog_verify">
+	    	  VERIFY
+	    	</button>
+	    	<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="back_business_dialog">
+	    	  CANCEL
+	    	</button>
+	    	
+	    </div>
+	</dialog>
+
+	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<script src="extra/material.components.ext.min.js"></script>
+
+</body>
+</html>
+<!-- firebase start -->
+<!-- <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAmjQdD6_FKIXVrFGQIikbt-yejInq4Chg",
+    authDomain: "go-negosyo.firebaseapp.com",
+    databaseURL: "https://go-negosyo.firebaseio.com",
+    projectId: "go-negosyo",
+    storageBucket: "go-negosyo.appspot.com",
+    messagingSenderId: "127403329753"
+  };
+  firebase.initializeApp(config);
+</script> -->
+
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAmjQdD6_FKIXVrFGQIikbt-yejInq4Chg",
+    authDomain: "go-negosyo.firebaseapp.com",
+    databaseURL: "https://go-negosyo.firebaseio.com",
+    projectId: "go-negosyo",
+    storageBucket: "go-negosyo.appspot.com",
+    messagingSenderId: "127403329753"
+  };
+  firebase.initializeApp(config);
+</script>
+<!-- firebase end -->
+<!-- MyJS -->
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('#po_date_apply').click(() => {
+		const from = $('#from_datepicker').val() || null;
+		const to = $('#to_datepicker').val() || null;
+		if (from === null) {
+			alert('Please select the start date.');
+			return false;
+		}else if (to === null) {
+			alert('Please select the end date.');
+			return false;
+		}
+		var fromDate = new Date(from).getTime();
+		var toDate = (new Date(to).getTime()) + 86400;
+
+
+		firebase.database().ref().child('PurchaseOrder').once('value', snapshot => {
+			purchase_table.clear().draw();
+			snapshot.forEach(snap => {
+
+				const stamp = snap.child('timestamp').val();
+				
+				if (fromDate <= stamp && toDate >= stamp) {
+					console.log(stamp);
+					var id = snap.child("id").val();
+					var order_date = snap.child("order_date").val();
+					var delivery_date = snap.child("delivery_date").val();
+					var supplier = snap.child("supplier").val();
+					var currency = snap.child("currency").val();
+					var status = snap.child("status").val();
+					var items = snap.child("items").val();
+					var final_items = snap.child("final_items").val();
+					var final_orig_quantity = snap.child("final_orig_quantity").val();
+					var orgQuantity = snap.child("orig_quantity").val();
+					const categories = snap.child('categories').val() || null;
+					const descriptions = snap.child('descriptions').val() || null;
+					const units = snap.child('units').val() || null;
+					const measurements = snap.child('measurements').val() || null;
+
+					var print = '<a href="#" class="print" status="'+status+'" supplier="'+supplier+'" id="'+id+'" items="'+final_items+'" orgQuantity="'+final_orig_quantity+'" delivery_date="'+delivery_date+'" measurements="'+measurements+'" units="'+units+'" descriptions="'+descriptions+'" categories="'+categories+'">'+snap.child("print").val()+'</a>';
+					var receive;
+					if (status == "Authorised") {
+						receive = '---';
+					}else {
+						if (ubosNaUngPO(items)) {
+							receive = '<a href="#" style="color: #D8000C !important;" class="receive" po_id="'+id+'" items="'+items+'" orgQuantity="'+orgQuantity+'" measurements="'+measurements+'" units="'+units+'" descriptions="'+descriptions+'" categories="'+categories+'">'+snap.child("receive").val()+'</a>';
+						}else {
+							receive = '<a href="#" class="receive" po_id="'+id+'" items="'+items+'" orgQuantity="'+orgQuantity+'" measurements="'+measurements+'" units="'+units+'" descriptions="'+descriptions+'" categories="'+categories+'">'+snap.child("receive").val()+'</a>';
+						}
+						
+					}
+
+					var dataset = [order_date, delivery_date, supplier, currency, status, print, receive];
+					purchase_table.rows.add([dataset]).draw().nodes().to$().addClass('table_row '+id).hide().fadeIn('slow');
+
+				}
+
+				
+			});
+
+		});
+	});
+
+	$("#from_datepicker").datepicker({
+		maxDate: new Date(),
+		onSelect: function(selectedDate) {
+			var v = $(this).val(),
+                d = new Date(v);
+            if (v.length > 0) {
+                const selectedTimestamp = (d.valueOf() / 1000);
+            } else {
+                alert('No date selected');
+            }
+		}
+	});
+	$('#to_datepicker').datepicker({
+		maxDate: new Date(),
+		onSelect: function(selectedDate) {
+			var v = $(this).val(),
+                d = new Date(v);
+            if (v.length > 0) {
+                const selectedTimestamp = (d.valueOf() / 1000);
+            } else {
+                alert('No date selected');
+            }
+		}
+	});
+
+
+	$('#so_date_apply').click(() => {
+		const from = $('#from_datepicker_so').val() || null;
+		const to = $('#to_datepicker_so').val() || null;
+		if (from === null) {
+			alert('Please select the start date.');
+			return false;
+		}else if (to === null) {
+			alert('Please select the end date.');
+			return false;
+		}
+		var fromDate = new Date(from).getTime();
+		var toDate = (new Date(to).getTime()) + 86400;
+		console.log(fromDate);
+		console.log(toDate);
+		firebase.database().ref().child('sales_order').orderByChild('timestamp').once('value', snapshot => {
+			transaction_table.clear().draw();
+			snapshot.forEach(snap => {
+
+				const stamp = snap.child('timestamp').val();
+				if (stamp >= fromDate && stamp <= toDate) {
+
+					const key = snap.key;
+					const sales_order = snap.val();
+					const long = sales_order.order_date;
+					const productIds = sales_order.product_ids;
+					const productPrices = sales_order.product_prices;
+					const productQuantities = sales_order.product_quantities;
+					const productNames = sales_order.product_names;
+					const total_price = "₱ " + numberWithCommas(sales_order.total_price) + ".00";
+
+					const timestamp = new Date(long);
+					const date = monthNames[timestamp.getMonth()] + " " + timestamp.getDate() + ", " + timestamp.getFullYear();
+
+					const reciept = '<button class="mdl-button view_reciept" id="'+key+'" productIds="'+productIds+'" productPrices="'+productPrices+'" productQuantities="'+productQuantities+'" productNames="'+productNames+'" mdl-js-button mdl-button--raised mdl-js-ripple-effect">VIEW RECIEPT</button>';
+					
+					const dataset = [getProperIdNumber(key, productNames[0]), date, productIds.length, total_price, reciept];
+
+					transaction_table.rows.add([dataset]).draw().nodes().to$().addClass('table_row '+key).hide().fadeIn('slow');
+					componentHandler.upgradeDom();
+
+				}
+			});
+
+		});
+	});
+
+	$("#from_datepicker_so").datepicker({
+		maxDate: new Date(),
+		onSelect: function(selectedDate) {
+			var v = $(this).val(),
+                d = new Date(v);
+            if (v.length > 0) {
+                const selectedTimestamp = (d.valueOf() / 1000);
+            } else {
+                alert('No date selected');
+            }
+		}
+	});
+	$('#to_datepicker_so').datepicker({
+		maxDate: new Date(),
+		onSelect: function(selectedDate) {
+			var v = $(this).val(),
+                d = new Date(v);
+            if (v.length > 0) {
+                const selectedTimestamp = (d.valueOf() / 1000);
+            } else {
+                alert('No date selected');
+            }
+		}
+	});
+
+	function getProperIdNumber(key, name) {
+		const nameTwo = name.substring(0, 2);
+		const keyFour = key.substring(0, 4);
+		const keyLastFour = key.substring(key.length - 2, key.length);
+		return keyLastFour + "-" + nameTwo + keyFour;
+	}
+	
+	function unitConverter(unitName) {
+		if (unitName === 'Kilogram') {
+			return 'kg';
+		}else if (unitName === 'Millimeter') {
+			return 'ml';
+		}else if (unitName === 'Gram') {
+			return 'g';
+		}else if (unitName === 'Inches') {
+			return 'in';
+		}else if (unitName === 'Dozen') {
+			return 'dz';
+		}else if (unitName === 'Centimeter') {
+			return 'cm';
+		}else {
+			return null;
+		}
+	}
+
+	function updateWhenDeliveryDay(id, productIds, productQuantities){
+		firebase.database().ref().child("carts").child(id).child("isReduce").once('value', function(snap){
+			if (!snap.val()) {
+				// if isReduce is false
+
+				// update stock for each product & reduce demand of each product
+				for(var i = 0; i < productIds.length; i++){
+
+					var quantity = productQuantities[i];
+					var productId = productIds[i];
+					firebase.database().ref().child("products").child(productId).once('value', function(snapshot){
+						var currStock = snapshot.child("stock").val();
+						var currDemand = snapshot.child("demand").val();
+						var newStock = parseInt(currStock) - parseInt(quantity);
+						var newDemand = parseInt(currDemand) - parseInt(quantity);
+						
+						firebase.database().ref().child("products").child(productId).update({
+							stock: newStock,
+							demand: newDemand
+						});
+						
+					});
+
+				}
+
+				firebase.database().ref().child("carts").child(id).update({
+					isReduce: true
+				});
+
+			}
+		});
+
+	}
+
+	function isTimesUp(futureDate){
+		var now = new Date();
+		var seconds = Math.floor((futureDate - (now))/1000);
+		if (0 >= seconds) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	function strToArrForProd(str){
+		var arr = str.split(",");
+		return arr;
+	}
+
+	function checkDate(){
+		setInterval(function(){
+			firebase.database().ref().child("carts").once('value', function(snap){
+				snap.forEach(function(child){
+					var id = child.child("cartId").val();
+					var deliveryDateStr = child.child("cartTimeDeliverDay").val();
+					var completeDateStr = child.child("cartTimeDeliveryCompleted").val();
+					var productIdsStr = child.child("productIds").val();
+					var productQuantitiesStr = child.child("productQuantities").val();
+
+					var deliveryDate = new Date(deliveryDateStr);
+					var completeDate = new Date(completeDateStr);
+
+					//array
+					var productIds = strToArrForProd(productIdsStr);
+					var productQuantities = strToArrForProd(productQuantitiesStr);
+
+					// update complete
+					if (isTimesUp(completeDate)) {
+						updatePending(id);
+					}
+
+					// update delivery day
+					if (isTimesUp(deliveryDate)) {					
+						updateWhenDeliveryDay(id, productIds, productQuantities);
+					}
+
+
+				});
+			});
+		}, 1000);
+	}
+
+	checkDate();
+
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+// ===================================AUTHENTICATION BEGIN===================================
+	var dialog = document.querySelector('#login_dialog');
+	if (!dialog.showModal) {
+		dialogPolyfill.registerDialog(dialog);
+	}
+
+	var po_dialog = document.querySelector('#po_dialog');
+	if (!dialog.showModal) {
+		dialogPolyfill.registerDialog(dialog);
+	}
+
+	var po_item_dialog = document.querySelector('#po_item_dialog');
+	if (!dialog.showModal) {
+		dialogPolyfill.registerDialog(dialog);
+	}
+
+	var print_po_dialog = document.querySelector('#print_po_dialog');
+	if (!dialog.showModal) {
+		dialogPolyfill.registerDialog(dialog);
+	}
+
+	var business_dialog = document.querySelector('#business_dialog');
+	if (!dialog.showModal) {
+		dialogPolyfill.registerDialog(dialog);
+	}
+
+	var verifiedMSME = [];
+
+	const messaging = firebase.messaging();
+
+	const functions = firebase.functions();
+	const listAllMSME = functions.httpsCallable('listAllMSME');
+	const verifyMSME = functions.httpsCallable('verifyMSME');
+	const listAllVerifiedMSME = functions.httpsCallable('listAllVerifiedMSME');
+	
+	firebase.auth().onAuthStateChanged(function(user){
+		if (user) {
+			// Gettting the ID token
+			// To check the user's claims
+			user.getIdTokenResult()
+				.then(idTokenResult => {
+					/*if (idTokenResult.claims.admin) {
+						// The user is claims as Admin
+						// Showing the home
+						$('#login_cover').hide();
+						dialog.close();
+						console.log("May user na nakalogin ung admin");
+					}else {
+						// Valid account but not Admin
+						// Going to sign out and showing the invalid username and password err
+						console.log("Not an admin. The system will now logout.");
+						
+						firebase.auth().signOut()
+							.then(() => {
+								$('#showError').text("The password is invalid or the user does not have a password.");
+								$('#showError').show();
+
+								$('#login_btn').show();
+								$('#loading_submit').hide();
+							})
+							.catch(err => {
+								$('#showError').text(err.message);
+								$('#showError').show();
+
+								$('#login_btn').show();
+								$('#loading_submit').hide();
+							});
+					}*/
+					$('#login_cover').hide();
+					dialog.close();
+					console.log("May user na nakalogin ung admin");
+				});
+
+			// Setting up admin notification
+			messaging
+				.requestPermission()
+				.then(() => messaging.getToken())
+				.then(token => firebase.database().ref().child('adminToken').set(token))
+				.catch(err => alert(err));
+
+			console.log("Setting up admin notification");
+			messaging
+			    .onMessage(payload => {
+			        const notificationTitle = payload.notification.title;
+			        const notificationOptions = {
+			            body: payload.notification.body,
+			            icon: payload.notification.icon,        
+			        };
+
+			        if (!("Notification" in window)) {
+			            console.log("This browser does not support system notifications");
+			        }else if (Notification.permission === "granted") {
+			            var notification = new Notification(notificationTitle,notificationOptions);
+			            notification.onclick = function(event) {
+			                event.preventDefault(); // prevent the browser from focusing the Notification's tab
+			                window.open(payload.notification.click_action , '_blank');
+			                notification.close();
+			            }
+			        }
+			        
+			        return console.log("Message received. ", payload);
+			    });
+
+		}else {
+			if (dialog.open == false) {
+				dialog.showModal();
+			}
+		}
+	});
+	
+
+	$('#login_btn').click(function(){
+		if ($('#email').val() == "" || $('#password').val() == "") {
+			dialog.close();
+			swal("Username or password is empty", "", "warning")
+			.then((value) => {
+				dialog.showModal();
+			});
+		}else {
+			$('#login_btn').hide();
+			$('#loading_submit').show();
+			firebase.auth().signInWithEmailAndPassword($('#email').val(), $('#password').val()).catch(function(error){
+				$('#showError').text(error.message);
+				$('#showError').show();
+
+				$('#login_btn').show();
+				$('#loading_submit').hide();
+			});
+			
+
+		}
+	});
+
+	$('#logout').click(function(){
+		swal({
+			title: "Are you sure to logout?",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		}).then((willLogout) => {
+			if (willLogout) {
+				firebase.auth().signOut();
+				$('#login_form')[0].reset();
+				$("#emailTextField").get(0).MaterialTextfield.checkDirty();
+				$("#passwordTextField").get(0).MaterialTextfield.checkDirty();
+				$('#login_cover').show();
+				$('#login_btn').show();
+				$('#loading_submit').hide();
+				$('#showError').hide();
+			}
+		});
+	});
+
+// ===================================AUTHENTTICATION END===================================
+
+// ===================================FUNCTION BEGIN===================================
+
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+	function toInteger(number){ 
+	  return Math.round(  // round to nearest integer
+	    Number(number)    // type cast your input
+	  ); 
+	};
+
+	function convertToInt(str){
+		var output = "";
+		var arr = str.split("");
+		for (var i = 0; i < arr.length; i++){
+			if (arr[i] == "₱") {
+				continue;
+			}else if(arr[i] == " "){
+				continue;
+			}else if(arr[i] == ","){
+				continue;
+			}else if(arr[i] == "."){
+				break;
+			}else {
+				output = output + arr[i];
+			}
+		}
+		return parseInt(output);
+	}
+
+// ===================================FUNCTION END===================================
+
+
+// ===================================DATATABLE BEGIN===================================
+	var item_table = $('#item_table').DataTable({
+		"bFilter": true,
+		"columnDefs":[
+			{
+				"targets":[1, 4, 5],
+				"orderable":false
+			},
+			{
+				"targets":[0, 1, 3],
+				className: 'mdl-data-table__cell--non-numeric'
+			},
+		]
+	});
+
+	var price_table = $('#price_table').DataTable({
+		"bFilter": true,
+		"columnDefs":[
+			{
+				"targets":[1, 4],
+				"orderable":false
+			},
+			{
+				"targets":[0, 1, 4],
+				className: 'mdl-data-table__cell--non-numeric'
+			},
+		]
+	});
+
+	var po_item_table = $('#po_item_table').DataTable({
+		"bFilter": true,
+		"columnDefs":[
+			{
+				"targets":[5],
+				"orderable":false
+			},
+			{
+				"targets":[0, 1, 2],
+				className: 'mdl-data-table__cell--non-numeric'
+			},
+		]
+	});
+
+	var inventory_table = $('#inventory_table').DataTable({
+		"bFilter": true,
+		"columnDefs":[
+			{
+				"targets":[1],
+				"orderable":false
+			},
+			{
+				"targets":[0],
+				className: 'mdl-data-table__cell--non-numeric'
+			},
+		]
+	});
+
+	var shortage_table = $('#shortage_table').DataTable({
+		"bFilter": true,
+		"columnDefs":[
+			{
+				"targets":[1],
+				"orderable":false
+			},
+			{
+				"targets":[0],
+				className: 'mdl-data-table__cell--non-numeric'
+			},
+		]
+	});
+
+	var business_table = $('#business_table').DataTable({
+		"bFilter": true,
+		"columnDefs":[
+			// {
+			// 	"targets":[1],
+			// 	"orderable":false
+			// },
+			{
+				"targets":[0, 1, 2, 3, 4, 5],
+				className: 'mdl-data-table__cell--non-numeric'
+			},
+		]
+	});
+
+	const solid_table = $('#solid_table').DataTable({
+		"bFilter": true,
+		"columnDefs":[
+			{
+				"targets":[4],
+				"orderable":false
+			},
+			{
+				"targets":[0, 1, 2, 3, 4],
+				className: 'mdl-data-table__cell--non-numeric'
+			},
+		]
+	});
+
+	var okay_item = false;
+	var okay_item_update = false;
+	var iyot_iyot_gago = false;
+	
+	function showProductFilterByMSME(msmeName) {
+		po_item_table.clear().draw();
+		firebase.database().ref().child('products').orderByChild('msme').equalTo(msmeName).once('value', snapshot => {
+			snapshot.forEach(snap => {
+				var id = snap.child("id").val();
+				var name = snap.child("name").val();
+				var image = snap.child("image").val();
+				var image_extension = snap.child("imageExtension").val();
+				var category = snap.child("weight").val();
+				var description = snap.child("short").val();
+				var price = "₱ " + numberWithCommas(snap.child("price").val());
+				const msme = snap.child("msme").val() || null;
+				const unit = snap.child('unit').val() || null;
+				const measurement = snap.child('measurement').val() || null;
+				const limit = snap.child('limit').val() || null;
+
+				var final_unit = null;
+				if (unit !== null && measurement !== null) {
+					final_unit = measurement.toString() + " " + unitConverter(unit);
+				}
+
+				var input_quantity = '<div style="font-family: Roboto-Light;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label quantity_input_item"><input class="mdl-textfield__input input_input" type="number" id="input_quantity" limit="'+limit+'" item_id="'+id+'" item_name="'+name+'" measurement="'+measurement+'" unit="'+unit+'" description="'+description+'" category="'+category+'"><label class="mdl-textfield__label" for="input_quantity">Quantity</label></div>';
+				var dataset2 = [name, description, category, limit, final_unit, input_quantity];
+				po_item_table.rows.add([dataset2]).draw().nodes().to$().addClass('table_row '+id).hide().fadeIn('slow');
+				// Dynamic MDL designs
+				componentHandler.upgradeDom();
+			})
+
+		});
+	}
+
+	firebase.database().ref().child('products').on('value', snapshot => {
+		solid_table.clear().draw();
+		snapshot.forEach(snap => {
+			var id = snap.child("id").val();
+			const stock = snap.child('stock').val() || 0;
+			var name = snap.child("name").val();
+			var weight = snap.child("weight").val();
+			var price = "₱ " + numberWithCommas(snap.child("price").val());
+			
+			if (parseInt(stock) > 0 && snap.child("price").val() > 0) {
+
+				const pick = '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox_'+ id +'">\
+								<input type="checkbox" id="checkbox_'+ id +'" class="mdl-checkbox__input check_solid" product_name="'+name+'" product_id="'+ id +'" product_price="'+ snap.child("price").val() +'" product_onhand="'+stock+'">\
+								<span class="mdl-checkbox__label">Pick</span>\
+							</label>';
+
+				var dataset2 = [name, weight, stock, price, pick];
+				solid_table.rows.add([dataset2]).draw().nodes().to$().addClass('table_row '+id).hide().fadeIn('slow');
+			}
+		});
+		componentHandler.upgradeDom();
+	});
+
+	firebase.database().ref().child("products").on("child_added", function(snap){
+
+		var id = snap.child("id").val();
+		var name = snap.child("name").val();
+		var image = snap.child("image").val();
+		var image_extension = snap.child("imageExtension").val();
+		var weight = snap.child("weight").val();
+		var description = snap.child("short").val();
+		var price = "₱ " + numberWithCommas(snap.child("price").val());
+		const msme = snap.child("msme").val() || null;
+		const stock = snap.child('stock').val() || 0;
+		const unit = snap.child('unit').val() || null;
+		const measurement = snap.child('measurement').val() || null;
+		const category = snap.child('weight').val() || null;
+		const limit = snap.child('limit').val() || null;
+
+		var editTd = '<button id="'+id+'" limit="'+limit+'" unit="'+unit+'" measurement="'+measurement+'" image_extension="'+image_extension+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored btn_edit"><i class="material-icons text-info">mode_edit</i></button>';
+
+		var image_style = '<img class="image_style" src="'+image+'" width="90" height="90" style="border-radius: 15px;">';
+		var deleteTd = '<button id="'+id+'" image_extension="'+image_extension+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored btn_delete"><i class="material-icons text-danger">clear</i></button>';
+
+		var dataset = [name, image_style, weight, description, msme, editTd, deleteTd];
+		item_table.rows.add([dataset]).draw().nodes().to$().addClass('table_row '+id).hide().fadeIn('slow');
+
+		var btnSetPrice = '<button id="'+id+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--accent btn_price"><i class="material-icons">style</i></button>';
+
+		var price_dataset = [name, image_style, weight, price, btnSetPrice];
+		price_table.rows.add([price_dataset]).draw().nodes().to$().addClass('table_row '+id).hide().fadeIn('slow');
+
+		var input_quantity = '<div style="font-family: Roboto-Light;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label quantity_input_item"><input class="mdl-textfield__input input_input" type="number" id="input_quantity" item_id="'+id+'" item_name="'+name+'" measurement="'+measurement+'" unit="'+unit+'" description="'+description+'" category="'+category+'"><label class="mdl-textfield__label" for="input_quantity">Quantity</label></div>';
+
+		var on_hand = snap.child("quantity").val();
+		var demand = snap.child("demand").val();
+		var available = snap.child("stock").val();
+		var on_ordered = snap.child("ordered").val();
+		
+		var dataset3 = [name, image_style, available, demand, on_hand, on_ordered];
+		inventory_table.rows.add([dataset3]).draw().nodes().to$().addClass('table_row '+id).hide().fadeIn('slow');
+
+		// Dynamic MDL designs
+		componentHandler.upgradeDom();
+
+		if (okay_item) {
+			$('#loading').hide('slow');
+			$('#loading_modal').hide('slow');
+			$('.item_footer').html('<button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">CANCEL</button><button id="item_submit" class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect">SUBMIT</button>');
+			$('#modal').modal('hide');
+			k = "Item " + name + " added successfully";
+			swal(k, "", "success");
+		}
+	});
+
+	var checkDirty = false;
+
+	firebase.database().ref().child("products").on("child_changed", function(snap){
+		var id = snap.child("id").val();
+		var name = snap.child("name").val();
+		var image = snap.child("image").val();
+		var image_extension = snap.child("imageExtension").val();
+		var weight = snap.child("weight").val();
+		var description = snap.child("short").val();
+		var price = "₱ " + numberWithCommas(snap.child("price").val());
+		const msme = snap.child("msme").val() || null;
+		const stock = snap.child('stock').val() || 0;
+		const unit = snap.child('unit').val() || null;
+		const measurement = snap.child('measurement').val() || null;
+		const limit = snap.child('limit').val() || null;
+
+		var editTd = '<button id="'+id+'" limit="'+limit+'" unit="'+unit+'" measurement="'+measurement+'" image_extension="'+image_extension+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored btn_edit"><i class="material-icons text-info">mode_edit</i></button>';
+
+		var image_style = '<img class="image_style" src="'+image+'" width="90" height="90" style="border-radius: 15px;">';
+
+		var deleteTd = '<button id="'+id+'" image_extension="'+image_extension+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored btn_delete"><i class="material-icons text-danger">clear</i></button>';
+
+		var dataset = [name, image_style, weight, description, msme, editTd, deleteTd];
+		item_table.row('.'+id).data(dataset).draw();
+
+		const pick = '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox_'+ id +'">\
+							<input type="checkbox" id="checkbox_'+ id +'" class="mdl-checkbox__input check_solid" product_name="'+name+'" product_id="'+ id +'" product_price="'+ snap.child("price").val() +'" product_onhand="'+stock+'">\
+							<span class="mdl-checkbox__label">Pick</span>\
+						</label>';
+
+		var dataset22 = [name, weight, stock, price, pick];
+		// solid_table.row('.'+id).data(dataset22).draw();
+
+		var btnSetPrice = '<button id="'+id+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--accent btn_price"><i class="material-icons">style</i></button>';
+
+		var price_dataset = [name, image_style, weight, price, btnSetPrice];
+		price_table.row('.'+id).data(price_dataset).draw();
+
+		var on_hand = snap.child("quantity").val();
+		var demand = snap.child("demand").val();
+		var available = snap.child("stock").val();
+		var on_ordered = snap.child("ordered").val();
+
+		var dataset2 = [name, image_style, available, demand, on_hand, on_ordered];
+		inventory_table.row('.'+id).data(dataset2).draw();
+
+		var input_quantity = '<div style="font-family: Roboto-Light;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label quantity_input_item"><input class="mdl-textfield__input input_input" type="number" id="input_quantity" item_id="'+id+'" item_name="'+name+'" measurement="'+measurement+'" unit="'+unit+'" description="'+description+'" category="'+weight+'"><label class="mdl-textfield__label" for="input_quantity">Quantity</label></div>';
+		var dataset3 = [name, description, input_quantity];
+		// po_item_table.row('.'+id).data(dataset3).draw();
+
+		checkDirty = true;
+
+		if (okay_item_update) {
+			$('#modal').modal('hide');
+			swal("Item updated successfully", "", "success");
+			$('#loading').hide('slow');
+			$('#loading_modal').hide('slow');
+			$('.item_footer').html('<button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">CANCEL</button><button id="item_submit" class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect">UPDATE</button>');
+			okay_item_update = false;
+		}
+
+		if (iyot_iyot_gago) {
+			$('#price_modal').modal("hide");
+			swal("Item price set successfully", "", "success");
+			iyot_iyot_gago = false;
+		}
+
+	});
+
+	$(document).on('click', '.btn_delete', function(){
+		var data = item_table.row( $(this).parents('tr') ).data();
+		var image_extension = $(this).attr("image_extension");
+		var name = data[0];
+		var id = $(this).attr("id");
+		var title = "Are you sure to delete item "+name+"?";
+		swal({
+			title: title,
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				//var k = name + " deleted successfully!";
+				$('#loading').fadeIn('fast');
+				firebase.storage().ref().child("images").child(id + "." + image_extension).delete().then(function(){
+					firebase.database().ref().child("products").child(id).remove();
+				});
+					
+			}
+		});
+	});
+
+	firebase.database().ref().child("products").on("child_removed", function(snap){
+		var name = snap.child("name").val();
+		var id = snap.child("id").val();
+		$('#loading').hide('slow');
+		item_table.row('.'+id).remove().draw();
+		price_table.row('.'+id).remove().draw();
+		inventory_table.row('.'+id).remove().draw();
+		po_item_table.row('.'+id).remove().draw();
+		var k = name + " deleted successfully!";
+		swal(k, "", "success");
+	});
+
+	$(document).on('click', '.btn_edit', function(){
+		var id = $(this).attr("id");
+		var image_extension = $(this).attr("image_extension");
+		var data = item_table.row( $(this).parents('tr') ).data();
+
+		var name = data[0];
+		var image = data[1];
+		var weight = data[2];
+		var desc = data[3];
+		var msme = data[4];
+		const unit = $(this).attr('unit');
+		const measurement = $(this).attr('measurement');
+		const limit = $(this).attr('limit');
+
+		$('#item_form')[0].reset();
+		$('#item_id').val(id);
+		$('#item_image_extension').val(image_extension);
+		$("#nameTF").get(0).MaterialTextfield.change(name);
+		// $("#weightTF").get(0).MaterialTextfield.change(convertToInt(weight));
+		$("#weightTF").get(0).MaterialTextfield.change(weight);
+		$('#MSMETF').get(0).MaterialTextfield.change(msme);
+		$('#unitTF').get(0).MaterialTextfield.change(unit);
+		$('#measurementTF').get(0).MaterialTextfield.change(measurement);
+		$("#descTF").get(0).MaterialTextfield.change(desc);
+		$('#limitTF').get(0).MaterialTextfield.change(limit);
+		$("#imageTF").get(0).MaterialTextfield.checkDirty();
+		$('#image_container').html(image);
+		$('.item-title').text("Edit Item");
+		$('.image_label').text("Update image");
+		$('#item_submit').text('UPDATE');
+		// then open
+		$('#modal').modal('show');	
+	});
+
+	$(document).on('click', '#item_submit', function(){
+		var action = $('#item_submit').text();
+
+		if (action == "SUBMIT") {
+			var name = $('#item_name').val().trim();
+			var weight = $('#item_weight').val().trim();
+			var desc = $('#item_desc').val().trim();
+			//var price = $('#item_price').val().trim() + ".00";
+			var image_data = $('#item_image').prop('files')[0];
+			var image_extension = $('#item_image').val().split('\\').pop().split('.').pop();
+			const msme = $('#msme_select').val().trim();
+			const unit = $('#item_unit').val().trim();
+			const measurement = $('#item_measurement').val().trim();
+			const limit = $('#item_limit').val().trim();
+
+			if (image_extension == "" || name == "" || weight == "" || desc == "" || msme == "") {
+				swal("Form is incomplete");
+			}else {
+				if (image_extension == "jpg" || image_extension == "png" || image_extension == "jpeg"){
+					var id = firebase.database().ref().child("products").push().getKey();
+					var uploadTask = firebase.storage().ref().child("images").child(id + "." + image_extension).put(image_data);
+					uploadTask.on('state_changed', function(snapshot){
+						// blah blah
+						$('#loading_modal').fadeIn('fast');
+						$('#loading').fadeIn('fast');
+						$('.item_footer').html('<button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" disabled>CANCEL</button><button id="item_submit" class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" disabled>SUBMIT</button>');
+					}, function(error){
+						console.log(error.message);
+						swal("Error. See in console");
+						$('#loading').hide('slow');
+						$('#loading_modal').hide('slow');
+						$('.item_footer').html('<button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">CANCEL</button><button id="item_submit" class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect">SUBMIT</button>');
+					}, function(){
+						okay_item = true;
+						// var downloadURL = uploadTask.snapshot.downloadURL;
+						uploadTask.snapshot.ref.getDownloadURL()
+							.then(downloadURL => {
+								firebase.database().ref().child("products").child(id).set({
+									demand: 0,
+									id: id,
+									image: downloadURL,
+									imageExtension: image_extension,
+									name: name,
+									price: "0",
+									quantity: 0,
+									short: desc,
+									stock: 0,
+									weight: weight,
+									ordered: 0,
+									msme: msme,
+									unit: unit,
+									measurement: measurement,
+									limit: limit
+								});
+							});
+					});
+				}else {
+					swal("File is not an image");
+				}
+			}
+		}else {
+			var name = $('#item_name').val().trim();
+			var weight = $('#item_weight').val().trim();
+			var desc = $('#item_desc').val().trim();
+			//var price = $('#item_price').val().trim() + ".00";
+			var image_data = $('#item_image').prop('files')[0];
+			var image_extension = $('#item_image').val().split('\\').pop().split('.').pop();
+			var old_image_extension = $('#item_image_extension').val();
+			const msme = $('#msme_select').val().trim();
+			const unit = $('#item_unit').val().trim();
+			const measurement = $('#item_measurement').val().trim();
+			const limit = $('#item_limit').val().trim();
+
+			if (name == "" || weight == "" || desc == "") {
+				swal("Form is incomplete");
+			}else {
+				var id = $('#item_id').val();
+				swal({
+					title: "Are you sure you want to update this item?",
+					icon: "warning",
+					buttons: true,
+					dangerMode: true,
+				}).then((willDelete) => {
+					if (willDelete) {
+						$('#loading').fadeIn('fast');
+						$('#loading_modal').fadeIn('fast');
+						if (image_extension == "") {
+							okay_item_update = true;
+							firebase.database().ref().child("products").child(id).update({
+								name: name,
+								short: desc,
+								weight: weight,
+								msme: msme,
+								unit: unit,
+								measurement: measurement,
+								limit: limit
+							});
+							
+						}else {
+							if (image_extension == "jpg" || image_extension == "png" || image_extension == "jpeg"){
+								if (image_extension == old_image_extension) {
+									var uploadTask = firebase.storage().ref().child("images").child(id + "." + image_extension).put(image_data);
+									uploadTask.on('state_changed', function(snapshot){
+										// blah blah
+										$('.item_footer').html('<button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" disabled>CANCEL</button><button id="item_submit" class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" disabled>UPDATE</button>');
+									}, function(error){
+										console.log(error.message);
+										swal("Error. See in console");
+										$('#loading').hide('slow');
+										$('#loading_modal').hide('slow');
+										$('.item_footer').html('<button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">CANCEL</button><button id="item_submit" class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect">UPDATE</button>');
+									}, function(){
+										okay_item_update = true;
+										// var downloadURL = uploadTask.snapshot.downloadURL;
+										uploadTask.snapshot.ref.getDownloadURL()
+											.then(downloadURL => {
+												firebase.database().ref().child("products").child(id).update({
+													image: downloadURL,
+													name: name,
+													short: desc,
+													weight: weight,
+													msme: msme,
+													unit: unit,
+													measurement: measurement,
+													limit: limit
+												});
+											});
+									});
+								}else {
+									firebase.storage().ref().child("images").child(id + "." + old_image_extension).delete().then(function(){
+										var uploadTask = firebase.storage().ref().child("images").child(id + "." + image_extension).put(image_data);
+										uploadTask.on('state_changed', function(snapshot){
+											// blah blah
+											$('.item_footer').html('<button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal" disabled>CANCEL</button><button id="item_submit" class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" disabled>UPDATE</button>');
+										}, function(error){
+											console.log(error.message);
+											swal("Error. See in console");
+											$('#loading').hide('slow');
+											$('#loading_modal').hide('slow');
+											$('.item_footer').html('<button class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">CANCEL</button><button id="item_submit" class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect">UPDATE</button>');
+										}, function(){
+											okay_item_update = true;
+											// var downloadURL = uploadTask.snapshot.downloadURL;
+											uploadTask.snapshot.ref.getDownloadURL()
+												.then(downloadURL => {
+													firebase.database().ref().child("products").child(id).update({
+														image: downloadURL,
+														name: name,
+														short: desc,
+														weight: weight,
+														imageExtension: image_extension,
+														msme: msme,
+														unit: unit,
+														measurement: measurement,
+														limit: limit
+													});
+												});
+										});
+									});
+								}
+							}else {
+								swal("File is not image");
+							}
+						}
+					}
+				});
+				
+			}
+		}
+		
+	});
+
+	$('#add').click(function(){
+		var status = $('#modal_status').val();
+		if (status == "item") {
+			//reset form
+			$('#item_form')[0].reset();
+			$("#nameTF").get(0).MaterialTextfield.checkDirty();
+			$("#weightTF").get(0).MaterialTextfield.checkDirty();
+			$("#descTF").get(0).MaterialTextfield.checkDirty();
+			//$("#priceTF").get(0).MaterialTextfield.checkDirty();
+			$("#imageTF").get(0).MaterialTextfield.checkDirty();
+			$('#unitTF').get(0).MaterialTextfield.checkDirty();
+			$('#measurementTF').get(0).MaterialTextfield.checkDirty();
+			$('#MSMETF').get(0).MaterialTextfield.checkDirty();
+			$('#limitTF').get(0).MaterialTextfield.checkDirty();
+			$('#image_container').html("");
+			$('.item-title').text("Add New Product");
+			$('.image_label').text("Image");
+			$('#item_submit').text('SUBMIT');
+			// then open
+			$('#modal').modal('show');
+		}else if(status == "supplier"){
+			$('.supplier-title').text("Add New Supplier");
+			$('#supplier_form')[0].reset();
+			$("#supplierNameTF").get(0).MaterialTextfield.checkDirty();
+			$("#addressTF").get(0).MaterialTextfield.checkDirty();
+			$("#contactTF").get(0).MaterialTextfield.checkDirty();
+			$('#supplier_submit').text("ADD");
+			$('#supplier_modal').modal('show');
+		}
+		
+	});
+
+	var supplier_table = $('#supplier_table').DataTable({
+		"bFilter": true,
+		"columnDefs":[
+			{
+				"targets":[2, 3, 4],
+				"orderable":false
+			},
+			{
+				"targets":[0, 1],
+				className: 'mdl-data-table__cell--non-numeric'
+			},
+		]
+	});
+
+	var po_supplier_table = $('#po_supplier_table').DataTable({
+		"bFilter": true,
+		"columnDefs":[
+			{
+				"targets":[3],
+				"orderable":false
+			},
+			{
+				"targets":[0, 1],
+				className: 'mdl-data-table__cell--non-numeric'
+			},
+		],
+	});
+
+	var okay_supplier = false;
+
+	listAllMSME()
+		.then(userRecords => {
+			userRecords.data.forEach(userRecord => {
+				if (userRecord.customClaims !== null && userRecord.customClaims !== undefined && userRecord.customClaims.isVerified !== null && userRecord.customClaims.isVerified === true && userRecord.emailVerified === true) {
+					const id = userRecord.uid;
+					const name = userRecord.displayName;
+					const contact = userRecord.phoneNumber;
+					const address = "Fetching...";
+
+					var editTd = '<button id="'+id+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored supplier_btn_edit"><i class="material-icons text-info">mode_edit</i></button>';
+					var deleteTd = '<button id="'+id+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored supplier_btn_delete"><i class="material-icons text-danger">clear</i></button>';
+
+					var dataset = [name, address, contact, editTd, deleteTd];
+					supplier_table.rows.add([dataset]).draw().nodes().to$().addClass('table_row '+id).hide().fadeIn('slow');
+
+					var chooseTd = '<button choose_id="'+id+'" choose_name="'+name+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored supplier_choose"><i class="material-icons">radio_button_unchecked</i></button>';
+					var po_dataset = [name, address, contact, chooseTd];
+					po_supplier_table.rows.add([po_dataset]).draw().nodes().to$().addClass('table_row '+id).hide().fadeIn('slow');
+
+					firebase.database().ref().child('msme').child(userRecord.uid).child('address').once('value', snap => {
+						console.log(userRecord.uid);
+						const firebase_address = snap.val();
+						console.log(firebase_address);
+						var dataset = [name, firebase_address, contact, chooseTd];
+						po_supplier_table.row('.' + userRecord.uid).data(dataset).draw();
+					});
+
+					componentHandler.upgradeDom();
+
+					if (okay_supplier) {
+						var k = "Supplier " + name + " added successfully";
+						swal(k, "", "success");
+						$('#supplier_modal').modal('hide');
+						$('#loading_modal2').hide('fast');
+						$('#loading').hide('fast');
+					}
+
+					verifiedMSME.push(userRecord);
+				}
+			});
+
+			Array.prototype.insert = function ( index, item ) {
+			    this.splice( index, 0, item );
+			};
+			if (verifiedMSME.length > 0) {
+				verifiedMSME.insert(0, null);
+			}
+			verifiedMSME.forEach(userRecord => {
+				var o;
+				if (userRecord === null) {
+					o = new Option('', '');
+				}else {
+					o = new Option(userRecord.displayName, userRecord.displayName);
+				}
+				
+				$("#msme_select").append(o);
+			});
+		});
+
+	/*firebase.database().ref().child("suppliers").on("child_added", function(snap){
+		var name = snap.child("supplierName").val();
+		var address = snap.child("supplierAddress").val();
+		var contact = snap.child("supplierContact").val();
+		var id = snap.child("id").val();
+
+		var editTd = '<button id="'+id+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored supplier_btn_edit"><i class="material-icons text-info">mode_edit</i></button>';
+		var deleteTd = '<button id="'+id+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored supplier_btn_delete"><i class="material-icons text-danger">clear</i></button>';
+
+		var dataset = [name, address, contact, editTd, deleteTd];
+		supplier_table.rows.add([dataset]).draw().nodes().to$().addClass('table_row '+id).hide().fadeIn('slow');
+
+		var chooseTd = '<button choose_id="'+id+'" choose_name="'+name+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored supplier_choose"><i class="material-icons">radio_button_unchecked</i></button>';
+		var po_dataset = [name, address, contact, chooseTd];
+		po_supplier_table.rows.add([po_dataset]).draw().nodes().to$().addClass('table_row '+id).hide().fadeIn('slow');
+
+		componentHandler.upgradeDom();
+
+		if (okay_supplier) {
+			var k = "Supplier " + name + " added successfully";
+			swal(k, "", "success");
+			$('#supplier_modal').modal('hide');
+			$('#loading_modal2').hide('fast');
+			$('#loading').hide('fast');
+		}
+		
+	});*/
+
+	firebase.database().ref().child("suppliers").on("child_changed", function(snap){
+		var name = snap.child("supplierName").val();
+		var address = snap.child("supplierAddress").val();
+		var contact = snap.child("supplierContact").val();
+		var id = snap.child("id").val();
+
+		var editTd = '<button id="'+id+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored supplier_btn_edit"><i class="material-icons text-info">mode_edit</i></button>';
+		var deleteTd = '<button id="'+id+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored supplier_btn_delete"><i class="material-icons text-danger">clear</i></button>';
+
+		var dataset = [name, address, contact, editTd, deleteTd];
+		supplier_table.row('.'+id).data(dataset).draw();
+
+		var chooseTd = '<button choose_id="'+id+'" choose_name="'+name+'" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored supplier_choose"><i class="material-icons">radio_button_unchecked</i></button>';
+		var po_dataset = [name, address, contact, chooseTd];
+		po_supplier_table.row('.'+id).data(po_dataset).draw();
+
+		swal("Item updated successfully", "", "success");
+		$('#supplier_modal').modal('hide');
+
+		componentHandler.upgradeDom();
+
+		$('#loading_modal2').hide("fast");
+		$('#loading').hide("fast");
+	});
+
+	$(document).on("click", "#supplier_submit", function(){
+		var status = $('#supplier_submit').text();
+		if (status == "ADD") {
+			var supplier_name = $('#supplier_name').val().trim();
+			var supplier_address = $('#supplier_address').val().trim();
+			var supplier_contact = $('#supplier_contact').val().trim();
+			if (supplier_name == "" || supplier_address == "" || supplier_contact == "") {
+				swal("Supplier form is incomplete");
+			}else {
+				okay_supplier = true;
+				$('#loading_modal2').show('fast');
+				$('#loading').show('fast');
+				var id = firebase.database().ref().child("suppliers").push().getKey();
+				firebase.database().ref().child("suppliers").child(id).set({
+					supplierName: supplier_name,
+					supplierAddress: supplier_address,
+					supplierContact: supplier_contact,
+					id: id
+				});
+			}
+		}else if (status == "UPDATE") {
+			var supplier_name = $('#supplier_name').val().trim();
+			var supplier_address = $('#supplier_address').val().trim();
+			var supplier_contact = $('#supplier_contact').val().trim();
+			if (supplier_name == "" || supplier_address == "" || supplier_contact == "") {
+				swal("Supplier form is incomplete");
+			}else {
+				$('#loading_modal2').show('fast');
+				$('#loading').show('fast');
+				var id = $("#supplier_id").val();
+				firebase.database().ref().child("suppliers").child(id).update({
+					supplierName: supplier_name,
+					supplierAddress: supplier_address,
+					supplierContact: supplier_contact
+				});
+				
+			}
+		}
+		
+	});
+
+	firebase.database().ref().child("suppliers").on("child_removed", function(snap){
+		var name = snap.child("supplierName").val();
+		var id = snap.child("id").val();
+		$('#loading').hide('slow');
+		supplier_table.row('.'+id).remove().draw();
+		po_supplier_table.row('.'+id).remove().draw();
+		var k = "Supplier " + name + " deleted successfully!";
+		swal(k, "", "success");
+	});
+
+	$(document).on('click', '.supplier_btn_delete', function(){
+		var data = supplier_table.row( $(this).parents('tr') ).data();
+		var name = data[0];
+		var id = $(this).attr("id");
+		var title = "Are you sure to delete supplier "+name+"?";
+		swal({
+			title: title,
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				$('#loading').hide('show');
+				firebase.database().ref().child("suppliers").child(id).remove();
+			}
+		});
+	});
+
+	$(document).on('click', ".supplier_btn_edit", function(){
+		var id = $(this).attr("id");
+		var data = supplier_table.row( $(this).parents('tr') ).data();
+
+		var name = data[0];
+		var address = data[1];
+		var contact = data[2];
+
+		$('#supplier_form')[0].reset();
+		$('#supplier_id').val(id);
+		$("#supplierNameTF").get(0).MaterialTextfield.change(name);
+		$("#addressTF").get(0).MaterialTextfield.change(address);
+		$('#contactTF').get(0).MaterialTextfield.change(contact);
+		$('.supplier-title').text("Edit Supplier");
+		$('#supplier_submit').text('UPDATE');
+		// then open
+		$('#supplier_modal').modal('show');
+	});
+
+	var purchase_table = $('#purchase_table').DataTable({
+		"order": [[ 1, "desc" ]],
+		"bFilter": true,
+		"columnDefs":[
+			{
+				"targets":[3, 5, 6],
+				"orderable":false
+			},
+			{
+				"targets":[0, 1, 2, 3, 4, 5, 6],
+				className: 'mdl-data-table__cell--non-numeric'
+			}
+		],
+		dom: 'Blfrtip',
+        buttons: [
+            { 
+            	extend: 'excel', 
+            	className: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect',
+            	exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4]
+                },
+                title: 'Purchase Summary Report',
+                customize: function(win) {
+                	$(win.document.body).prepend('<center><img src="images/dti.png" /></center>');
+					$(win.document.body).append('<center><br><br><br><input type="text" style="border: 0; border-bottom: 1px solid #000; text-align: center;" value="Lance Jasper Casas" /><h6 style="margin-top: -1px;">DTI ADMIN</h6></center>'); //after the table
+				}
+        	},
+            { 
+            	extend: 'pdf', 
+            	className: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect',
+            	exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4]
+                },
+                title: 'Purchase Summary Report',
+                customize: function(win) {
+					$(win.document.body).append('<center><br><br><br><input type="text" style="border: 0; border-bottom: 1px solid #000; text-align: center;" value="Lance Jasper Casas" /><h6 style="margin-top: -1px;">DTI ADMIN</h6></center>'); //after the table
+				}
+            },
+            { 
+            	extend: 'print', 
+            	className: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect',
+            	exportOptions: {
+                    columns: [ 0, 1, 2, 4]
+                },
+                title: 'Purchase Summary Report',
+                customize: function(win) {
+                	$(win.document.body).prepend('<center><img src="http://www.molave.gov.ph/wp-content/uploads/2017/05/dti-logo.jpg" width="200" height="200" /><br><br></center>');
+					$(win.document.body).append('<center><br><br><br><input type="text" style="border: 0; border-bottom: 1px solid #000; text-align: center;" value="Lance Jasper Casas" /><br><h6 style="margin-top: -1px;">DTI ADMIN</h6></center>'); //after the table
+				}
+        	}
+        ]
+	});
+
+	function ubosNaUngPO(item){
+		var arr_items = item.split(",");
+		var hindiPaUbos = false;
+		for(var i = 0; i < arr_items.length; i+=3){
+			if (arr_items[i+1] > 0) {
+				hindiPaUbos = true;
+				break;
+			}
+		}
+
+		if (hindiPaUbos) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+
+	// TODO: Filter by date
+	firebase.database().ref().child("PurchaseOrder").on("child_added", function(snap){
+		var id = snap.child("id").val();
+		var order_date = snap.child("order_date").val();
+		var delivery_date = snap.child("delivery_date").val();
+		var supplier = snap.child("supplier").val();
+		var currency = snap.child("currency").val();
+		var status = snap.child("status").val();
+		var items = snap.child("items").val();
+		var final_items = snap.child("final_items").val();
+		var final_orig_quantity = snap.child("final_orig_quantity").val();
+		var orgQuantity = snap.child("orig_quantity").val();
+		const categories = snap.child('categories').val() || null;
+		const descriptions = snap.child('descriptions').val() || null;
+		const units = snap.child('units').val() || null;
+		const measurements = snap.child('measurements').val() || null;
+
+		var print = '<a href="#" class="print" status="'+status+'" supplier="'+supplier+'" id="'+id+'" items="'+final_items+'" orgQuantity="'+final_orig_quantity+'" delivery_date="'+delivery_date+'" measurements="'+measurements+'" units="'+units+'" descriptions="'+descriptions+'" categories="'+categories+'">'+snap.child("print").val()+'</a>';
+		var receive;
+		if (status == "Authorised") {
+			receive = '---';
+		}else {
+			if (ubosNaUngPO(items)) {
+				receive = '<a href="#" style="color: #D8000C !important;" class="receive" po_id="'+id+'" items="'+items+'" orgQuantity="'+orgQuantity+'" measurements="'+measurements+'" units="'+units+'" descriptions="'+descriptions+'" categories="'+categories+'">'+snap.child("receive").val()+'</a>';
+			}else {
+				receive = '<a href="#" class="receive" po_id="'+id+'" items="'+items+'" orgQuantity="'+orgQuantity+'" measurements="'+measurements+'" units="'+units+'" descriptions="'+descriptions+'" categories="'+categories+'">'+snap.child("receive").val()+'</a>';
+			}
+			
+		}
+
+		var dataset = [order_date, delivery_date, supplier, currency, status, print, receive];
+		purchase_table.rows.add([dataset]).draw().nodes().to$().addClass('table_row '+id).hide().fadeIn('slow');
+
+	});
+
+	firebase.database().ref().child("PurchaseOrder").on("child_changed", function(snap){
+		var id = snap.child("id").val();
+		var order_date = snap.child("order_date").val();
+		var delivery_date = snap.child("delivery_date").val();
+		var supplier = snap.child("supplier").val();
+		var currency = snap.child("currency").val();
+		var status = snap.child("status").val();
+		var items = snap.child("items").val();
+		var final_items = snap.child("final_items").val();
+		var final_orig_quantity = snap.child("final_orig_quantity").val();
+		var orgQuantity = snap.child("orig_quantity").val();
+		const categories = snap.child('categories').val() || null;
+		const descriptions = snap.child('descriptions').val() || null;
+		const units = snap.child('units').val() || null;
+		const measurements = snap.child('measurements').val() || null;
+
+
+		var print = '<a href="#" class="print" status="'+status+'" supplier="'+supplier+'" id="'+id+'" items="'+final_items+'" orgQuantity="'+final_orig_quantity+'" delivery_date="'+delivery_date+'" measurements="'+measurements+'" units="'+units+'" descriptions="'+descriptions+'" categories="'+categories+'">'+snap.child("print").val()+'</a>';
+		var receive;
+		if (status == "Authorised") {
+			receive = '---';
+		}else {
+			if (ubosNaUngPO(items)) {
+				receive = '<a href="#" style="color: #D8000C !important;" class="receive" po_id="'+id+'" items="'+items+'" orgQuantity="'+orgQuantity+'" measurements="'+measurements+'" units="'+units+'" descriptions="'+descriptions+'" categories="'+categories+'">'+snap.child("receive").val()+'</a>';
+			}else {
+				receive = '<a href="#" class="receive" po_id="'+id+'" items="'+items+'" orgQuantity="'+orgQuantity+'" measurements="'+measurements+'" units="'+units+'" descriptions="'+descriptions+'" categories="'+categories+'">'+snap.child("receive").val()+'</a>';
+			}
+			
+		}
+
+		var dataset = [order_date, delivery_date, supplier, currency, status, print, receive];
+		purchase_table.row('.'+id).data(dataset).draw();
+
+	});
+
+	firebase.database().ref().child("PurchaseOrder").on("child_removed", function(snap){
+		var id = snap.child("id").val();
+		purchase_table.row('.'+id).remove().draw();
+	});
+
+	$(document).on("click", '.supplier_choose', function(){
+		var name = $(this).attr("choose_name");
+		showProductFilterByMSME(name);
+		$('.input_input').val("");
+
+		if(checkDirty == false) {
+			$(".quantity_input_item").each(function(){
+				$(this).get(0).MaterialTextfield.checkDirty();
+			});
+		}
+
+		var id = $(this).attr("choose_id");
+		$('#supp_id').val(id);
+		$('#supp_name').val(name);
+		$('#supp_name_name').text(name);
+		po_dialog.close();
+		componentHandler.upgradeDom();
+		po_item_dialog.showModal();
+
+		checkDirty = false;
+	});
+
+
+
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+	var transaction_table = $('#transaction_table').DataTable({
+		"order": [[ 1, "desc" ]],
+		"bFilter": true,
+		"columnDefs":[
+			{
+				"targets":[4],
+				"orderable":false
+			},
+			{
+				"targets":[0, 1, 4],
+				className: 'mdl-data-table__cell--non-numeric'
+			},
+		],
+		dom: 'Blfrtip',
+        buttons: [
+            { 
+            	extend: 'excel', 
+            	className: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect',
+            	exportOptions: {
+                    columns: [ 0, 1, 2, 3]
+                },
+                title: 'Sale Summary Report',
+                customize: function(win) {
+					$(win.document.body).append('<center><br><br><br><input type="text" style="border: 0; border-bottom: 1px solid #000; text-align: center;" value="Lance Jasper Casas" /><h6 style="margin-top: -1px;">DTI ADMIN</h6></center>'); //after the table
+				}
+        	},
+            { 
+            	extend: 'pdf', 
+            	className: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect',
+            	exportOptions: {
+                    columns: [ 0, 1, 2, 3]
+                },
+                title: 'Sale Summary Report',
+                customize: function(win) {
+					$(win.document.body).append('<center><br><br><br><input type="text" style="border: 0; border-bottom: 1px solid #000; text-align: center;" value="Lance Jasper Casas" /><h6 style="margin-top: -1px;">DTI ADMIN</h6></center>'); //after the table
+				}
+            },
+            { 
+            	extend: 'print', 
+            	className: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect',
+            	exportOptions: {
+                    columns: [ 0, 1, 2, 3]
+                },
+                title: 'Sale Summary Report',
+                customize: function(win) {
+                	$(win.document.body).prepend('<center><img src="http://www.molave.gov.ph/wp-content/uploads/2017/05/dti-logo.jpg" width="200" height="200" /><br><br></center>');
+					$(win.document.body).append('<center><br><br><br><input type="text" style="border: 0; border-bottom: 1px solid #000; text-align: center;" value="Lance Jasper Casas" /><br><h6 style="margin-top: -1px;">DTI ADMIN</h6></center>'); //after the table
+				}
+        	}
+        ]
+	});
+
+	var total_sales = 0;
+
+	firebase.database().ref().child("sales_order").on("child_added", function(snap){
+		const key = snap.key;
+		const sales_order = snap.val();
+		const long = sales_order.order_date;
+		const productIds = sales_order.product_ids;
+		const productPrices = sales_order.product_prices;
+		const productQuantities = sales_order.product_quantities;
+		const productNames = sales_order.product_names;
+		const total_price = "₱ " + numberWithCommas(sales_order.total_price) + ".00";
+
+		const timestamp = new Date(long);
+		const date = monthNames[timestamp.getMonth()] + " " + timestamp.getDate() + ", " + timestamp.getFullYear();
+
+		const reciept = '<button class="mdl-button view_reciept" id="'+key+'" productIds="'+productIds+'" productPrices="'+productPrices+'" productQuantities="'+productQuantities+'" productNames="'+productNames+'" mdl-js-button mdl-button--raised mdl-js-ripple-effect">VIEW RECIEPT</button>';
+		
+		const dataset = [getProperIdNumber(key, productNames[0]), date, productIds.length, total_price, reciept];
+
+		transaction_table.rows.add([dataset]).draw().nodes().to$().addClass('table_row '+key).hide().fadeIn('slow');
+		componentHandler.upgradeDom();
+
+		total_sales += sales_order.total_price;
+		$('#total_sales_text').text("₱ " + numberWithCommas(total_sales) + ".00");
+	});
+
+	/*firebase.database().ref().child("carts").on("child_changed", function(snap){
+		var id = snap.child("cartId").val();
+		var total = "₱ " + numberWithCommas(snap.child("cartGrandTotal").val()) + ".00";
+		var firstname = snap.child("customerFirstname").val();
+		var lastname = snap.child("customerLastname").val();
+		var customer = lastname + ", " + firstname;
+		var phone = snap.child("customerPhone").val();
+		var orderDate = snap.child("cartTimeCreated").val();
+		var deliveryComplettion = snap.child("cartTimeDeliveryCompleted").val();
+		var status = snap.child("status").val();
+
+		var dataset = [status, id, total, customer, phone, orderDate, deliveryComplettion];
+		transaction_table.row('.'+id).data(dataset).draw();
+	});*/
+
+	listAllMSME()
+		.then(userRecords => {
+			console.log(userRecords);
+			var numOfNotif = 0;
+			userRecords.data.forEach(userRecord => {
+
+				const uid = userRecord.uid;
+				const displayName = userRecord.displayName;
+				const email = userRecord.email;
+				const emailVerified = userRecord.emailVerified === true ? 'Verified' : 'Not Verified';
+				const phoneNumber = userRecord.phoneNumber || null;
+				var isVerified = false;
+				if (userRecord.customClaims !== null && userRecord.customClaims.isVerified !== null) {
+					isVerified = userRecord.customClaims.isVerified;
+				}
+
+				if (!isVerified) {
+					numOfNotif++;
+				}
+
+				isVerified = isVerified === true ? 'Verified' : 'Not Verified';
+
+				var button = '<button class="mdl-button mdl-js-button mdl-js-ripple-effect show_details" id="'+uid+'">'+ (isVerified === 'Verified' ? 'SHOW' : 'VERIFY') +'</button>';
+
+				var dataset = [displayName, button, email, phoneNumber, emailVerified, isVerified];
+				business_table.rows.add([dataset]).draw().nodes().to$().addClass('table_row '+ uid).hide().fadeIn('slow');
+				componentHandler.upgradeDom();
+			});
+			$('#notif_count').attr('data-badge', numOfNotif);
+		})
+		.catch(error => console.log("Error: " + error));
+
+// ===================================DATATABLE END===================================
+
+
+	$('#home_tab').click(function(){
+		$('#circle_addBtn').hide();
+	});
+
+	$('#announcement_tab').click(() => {
+		$('#circle_addBtn').hide();
+	});
+
+	$('#inventory_tab').click(function(){
+		$('#circle_addBtn').hide();
+	});
+
+	$('#transaction_tab').click(function(){
+		$('#circle_addBtn').hide();
+	});
+
+	$('#po_tab').click(function(){
+		$('#circle_addBtn').hide();
+	});
+
+	$('#item_tab').click(function(){
+		$('#modal_status').val("item");
+		$('#circle_addBtn').show();
+	});
+
+	$('#price_tab').click(function(){
+		$('#circle_addBtn').hide();
+	});
+
+	$('#business_tab').click(() => {
+		$('#circle_addBtn').hide();
+	});
+
+	$('#supplier_tab').click(function(){
+		$('#modal_status').val("supplier");
+		$('#circle_addBtn').show();
+	});
+
+	$('#new_po').click(function(){
+		
+		po_dialog.showModal();
+		
+	});
+
+	$('#close_po_dialog').click(function(){
+		po_dialog.close();
+	});
+
+	$('#close_po_item_dialog').click(function(){
+		po_item_dialog.close();
+	});
+
+	$('#back_item_dialog').click(function(){
+		po_item_dialog.close();
+		po_dialog.showModal();
+	});
+
+	$('#submit_item_dialog').click(function(){
+		var haveVal = false;
+		var categories = [];
+		const units = [];
+		const measurements = [];
+		const descriptions = [];
+		var isLimitExceeded = false;
+		$('.input_input').each(function(){
+			var limit = $(this).attr('limit');
+			if (parseInt(limit) < parseInt($(this).val().trim())) {
+				isLimitExceeded = true;
+				return false;
+			}else if ($(this).val().trim() != "" && $(this).val().trim() > 0) {
+				haveVal = true;
+				categories.push($(this).attr('category')  || 'null');
+				descriptions.push($(this).attr('description') || 'null');
+				units.push($(this).attr('unit') || 'null');
+				measurements.push($(this).attr('measurement')  || 'null');
+			}
+		});
+		if (isLimitExceeded) {
+			alert('Some of the quantity for the product have exceeded the limit');
+			return false;
+		}
+		if (haveVal) {
+			po_item_dialog.close();
+			swal({
+				title: "Are you sure?",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+					var itemChoose = [];
+					var origQuantity = [];
+					$('.input_input').each(function(){
+						if ($(this).val().trim() != "" && $(this).val().trim() > 0) {
+							var quantity = $(this).val();
+							var id = $(this).attr("item_id");
+							var name = $(this).attr("item_name");
+							itemChoose.push(id, quantity, name);
+							origQuantity.push(quantity);
+						}
+					});
+					for(var i = 0; i < itemChoose.length; i+=3){
+						var id = itemChoose[i];
+						var quantity = itemChoose[i + 1];
+						firebase.database().ref().child("products").child(id).once("value", function(snap){
+							var currOrder = snap.child("ordered").val();
+							var newOrder = parseInt(currOrder) + parseInt(quantity);
+
+							firebase.database().ref().child("products").child(id).update({
+								ordered: newOrder
+							});
+						});
+					}
+
+					var PO_id = firebase.database().ref().child("PurchaseOrder").push().getKey();
+
+					var today = new Date();
+					var todayStr = today.toString();
+
+					var future = new Date();
+					future.setDate(future.getDate() + 2);
+					var futureStr = future.toString();
+
+					var supplier_name = $('#supp_name').val();
+					firebase.database().ref().child("PurchaseOrder").child(PO_id).set({
+						id: PO_id,
+						order_date: todayStr,
+						delivery_date: futureStr,
+						supplier: supplier_name,
+						currency: "Peso",
+						status: "Authorised",
+						print: "Print",
+						receive: "Receive",
+						items: itemChoose.toString(),
+						final_items: itemChoose.toString(),
+						orig_quantity: origQuantity.toString(),
+						final_orig_quantity: origQuantity.toString(),
+						categories: categories,
+						units: units,
+						measurements: measurements,
+						descriptions: descriptions,
+						timestamp: firebase.database.ServerValue.TIMESTAMP
+					});
+
+					swal("Good job!", "Purchase Order "+getProperIdNumber(PO_id, supplier_name)+" has been created!", "success");
+
+				}else {
+					po_item_dialog.showModal();
+				}
+			});
+		}else {
+			po_item_dialog.close();
+			swal("Choose first from the items before proceeding").then(function(){
+				po_item_dialog.showModal();
+			});
+		}
+		
+
+		
+	});
+
+	$(document).on("click", ".receive", function(){
+		var showModal = false;
+
+		var id = $(this).attr("po_id");
+		$('#po_id_id').val(id);
+		var items = $(this).attr("items");
+		var quantity = $(this).attr("orgQuantity");
+		var arr_items = items.split(",");
+		var arr_quantity = quantity.split(",");
+		const categories = $(this).attr('categories').split(",") || null;
+		const descriptions = $(this).attr('descriptions').split(",") || null;
+		const units = $(this).attr('units').split(",") || null;
+		const measurements = $(this).attr('measurements').split(",") || null;
+
+		var q = 0;
+		var output = '';
+		for(var i = 0; i<arr_items.length; i+=3){
+			var final_unit = null;
+			if (units !== null && measurements !== null && units[q] !== 'null' || units[q] !== null || units[q] !== undefined ||  measurements[q] !== 'null' || measurements[q] !== null || measurements[q] !== undefined) {
+				final_unit = measurements[q].toString() + unitConverter(units[q]);
+			}
+			if (final_unit === 'nullnull') {
+				final_unit = null;
+			}
+			if (arr_items[i+1] > 0) {
+				showModal = true;
+				var diff = arr_quantity[q] - arr_items[i+1];
+				output = output + '<tr><td class="mdl-data-table__cell--non-numeric">'+arr_items[i+2]+'</td><td class="mdl-data-table__cell--non-numeric">'+categories[q]+'</td><td class="mdl-data-table__cell--non-numeric">'+descriptions[q]+'</td><td>'+arr_items[i+1]+'</td><td>'+diff+'</td><td class="mdl-data-table__cell--non-numeric">'+final_unit+'</td><td><div style="font-family: Roboto-Light;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"><input class="mdl-textfield__input input_receive" type="number" orig_quantity="'+arr_quantity[q]+'" id="receive_quantity" curr_quantity="'+arr_items[i+1]+'" item_id="'+arr_items[i]+'" item_name="'+arr_items[i+2]+'"><label class="mdl-textfield__label" for="receive_quantity">Number...</label></div></td></tr>';
+			}
+			q++;
+			
+		}
+		if (showModal == false) {
+			output = '<tr><td colspan="7"><center>You already receive all the items from this Purchase Order</center></td></tr>';
+		}
+		$('#table_receive_body').html(output);
+		componentHandler.upgradeDom();
+		$('#modal_recevie').modal("show");
+	});
+
+	$('#receive_submit').click(function(){
+		var noVal = true;
+		$('.input_receive').each(function(){
+			if ($(this).val().trim() != "" && $(this).val().trim() > 0) {
+				noVal = false;
+				return false;
+			}		
+		});
+
+		if (noVal) {
+			swal("No input have value");
+		}else {
+			var haveNegaRes = false;
+			$('.input_receive').each(function(){
+				var orig_quantity = $(this).attr("curr_quantity");
+				if ($(this).val().trim() != "" && $(this).val().trim() > 0) {
+					var quantity = $(this).val().trim();
+					new_quantity = orig_quantity - quantity;
+					if (new_quantity < 0) {
+						haveNegaRes = true;
+						return false;
+					}
+				}
+			});
+
+			if (haveNegaRes) {
+				swal("Some inputs have higher Delivery Quantity than Quantity Delivered");
+			}else {
+				var items = [];
+				var orig_quantities = [];
+				var quantititis = [];
+				$('.input_receive').each(function(){
+					var orig_quantity = $(this).attr("orig_quantity");
+					var id;
+					var new_quantity;
+					var name;
+					if ($(this).val().trim() != "" && $(this).val().trim() > 0) {
+						id = $(this).attr("item_id");
+						var quantity = $(this).val().trim();
+						var curr_quantity = $(this).attr("curr_quantity");
+						quantititis.push(quantity);
+						new_quantity = curr_quantity - quantity;
+						name = $(this).attr("item_name");
+					}else {
+						var quantity = 0;
+						quantititis.push(quantity);
+						id = $(this).attr("item_id");
+						new_quantity = $(this).attr("curr_quantity");
+						name = $(this).attr("item_name");
+					}
+					
+					items.push(id, new_quantity, name);
+					orig_quantities.push(orig_quantity);
+
+				});
+
+				// orig_quantity - new_quantity = quantity
+				var q = 0;
+				for(var i = 0; i < items.length; i+=3){
+					var item_id = items[i];
+					var quantity = quantititis[q]; // => new_quantity
+					q++;
+					if (quantity > 0) {
+						firebase.database().ref().child("products").child(item_id).once("value", function(snap){
+							var available = snap.child("quantity").val();
+							var stock = snap.child("stock").val();
+							var ordered = snap.child("ordered").val();
+
+							var new_available = parseInt(available) + parseInt(quantity);
+							var new_stock = parseInt(stock) + parseInt(quantity);
+							var new_ordered = parseInt(ordered) - parseInt(quantity);
+
+							firebase.database().ref().child("products").child(item_id).update({
+								quantity: new_available,
+								stock: new_stock,
+								ordered: new_ordered
+							});
+
+						});
+					}
+				}
+
+				var po_id = $('#po_id_id').val();
+				firebase.database().ref().child("PurchaseOrder").child(po_id).update({
+					items: items.toString(),
+					orig_quantity: orig_quantities.toString()
+				});
+
+				$('#modal_recevie').modal('hide');
+
+				swal("Good job!", "Receive Item successfully!", "success");
+				
+			}	
+			
+		}
+		
+	});
+
+	$(document).on('click', '.show_details', (e) => {
+		var uid = $(e.currentTarget).attr("id");
+		firebase.database().ref().child('msme').child(uid).once('value', snap => {
+			business_dialog.showModal();
+
+			const msme = snap.val();
+			const images = msme.images;
+			const imagesName = msme.imagesName || null;
+			const uid = snap.key;
+
+			if (imagesName !== null) {
+				$('#image_one').attr("name", imagesName.image_0);
+				$('#image_two').attr("name", imagesName.image_1);
+				$('#image_three').attr("name", imagesName.image_2);
+			}
+
+			$('#image_one').attr("src", images.image_0);
+			$('#image_two').attr("src", images.image_1);
+			$('#image_three').attr("src", images.image_2);
+			$('#full_name').text(msme.full_name || null);
+			$('#email_address').text(msme.email_address || null);
+			$('#business_name').text(msme.business_name || null);
+			$('#item_names').text(msme.item_name || null);
+			$('#industry').text(msme.industry || null);
+			$('#phoneNumber').text(msme.mobile1 || null);
+			$('#home_address').text(msme.address || null);
+			$('#province').text(msme.province || null);
+			$('#date_birth').text(msme.date_birth || null);
+			$('#hidden_business_id').val(uid);
+
+			console.log(msme);
+		});
+	});
+
+	var print_table = $('#print_table').DataTable({
+		dom: 'Bfrtip',
+		"tableTools": {
+	        "aButtons": [
+	            "copy",
+	            "save"
+	        ]
+	    },
+	    aaSorting: [[1, 'asc']],
+		buttons: [
+			'copy',
+            {
+                extend: 'print',
+                className: "buttonsToHide",
+                messageTop: function () {
+                    return 'File Print'
+                },
+                messageBottom: function() {
+                	return "DTI Report"
+                },
+                title: function() {
+                	return 'Purchase Order'
+                }
+            }
+		],
+		"bFilter": true
+	});
+
+	$(document).on('click', '.print', function(){
+		var id = $(this).attr("id");
+		var status = $(this).attr("status");
+		var delivery_date = $(this).attr("delivery_date");
+		var delivery_date_value = delivery_date.split(' ', 4).join(' ');
+		var items = $(this).attr("items");
+		const supplier = $(this).attr('supplier');
+		var arr_items = items.split(",");
+		var orig_quantity = $(this).attr("orgQuantity");
+		var arr_orig_quantity = orig_quantity.split(",");
+		const categories = $(this).attr('categories').split(",") || null;
+		const descriptions = $(this).attr('descriptions').split(",") || null;
+		const units = $(this).attr('units').split(",") || null;
+		const measurements = $(this).attr('measurements').split(",") || null;
+		var output = '';
+
+		$('#purchase_receipt_id').text(getProperIdNumber(id, supplier));
+		$('#print_po_id').val(id);
+		$('#po_status').val(status);
+		$("#table_purchase_print").html(output);
+		print_po_dialog.showModal();
+		print_table.clear().draw();
+
+		var q = 0;
+		for(var i = 0; i < arr_items.length; i+=3){
+
+			const itemId = arr_items[i];
+			const itemName = arr_items[i+2];
+			const quantity = arr_items[i+1];
+			var unit = null;
+			const date_required = delivery_date_value;
+
+			if (units !== null && measurements !== null && units[q] !== 'null' || units[q] !== null || units[q] !== undefined ||  measurements[q] !== 'null' || measurements[q] !== null || measurements[q] !== undefined) {
+				unit = measurements[q].toString() + unitConverter(units[q]);
+			}
+			if (unit === 'nullnull') {
+				unit = null;
+			}
+
+			const dataset = [getProperIdNumber(itemId, itemName), itemName, categories[q] || null, descriptions[q] || null, quantity, unit, date_required];
+
+			print_table.rows.add([dataset]).draw().nodes().to$().addClass('table_row ' + itemId);
+			q++;
+		}
+
+	});
+
+	$('#cancel_print').click(function(){
+		print_po_dialog.close();
+	});
+
+	$('#close_business_dialog').click(() => {
+		business_dialog.close();
+	})
+
+	$('#print').click(function(){
+		var status = $('#po_status').val();
+		if (status == "Authorised") {
+			print_po_dialog.close();
+			swal({
+				title: "Print this Purchase Order?",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+					var id = $('#print_po_id').val();
+					firebase.database().ref().child("PurchaseOrder").child(id).update({
+						status: "Printed"
+					});
+					swal({
+						title: "Purchase Order has been printed!",
+						text: "You can now receive your purchase order items",
+						icon: "success",
+						button: "Aww yiss!",
+					});
+					$(".buttons-print")[0].click();
+				}else {
+					print_po_dialog.showModal();
+				}
+			});
+		}else {
+			print_po_dialog.close();
+			swal({
+				title: "You already print this Purchase Order. Print Again?",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+					swal({
+						title: "Purchase Order has been printed!",
+						icon: "success",
+						button: "Aww yiss!",
+					});
+					$(".buttons-print")[0].click();
+				}
+			});
+		}
+		
+		
+	});
+
+// ===================================DESING BEGIN===================================
+	$('.mdl-data-table').mouseover(function(){
+		$(this).removeClass('mdl-shadow--2dp');
+		$(this).addClass('mdl-shadow--3dp');
+		$(this).removeClass('mdl-shadow--3dp');
+		$(this).addClass('mdl-shadow--4dp');
+	});
+	$('.mdl-data-table').mouseleave(function(){
+		$(this).removeClass('mdl-shadow--4dp');
+		$(this).addClass('mdl-shadow--3dp');
+		$(this).removeClass('mdl-shadow--3dp');
+		$(this).addClass('mdl-shadow--2dp');
+	});
+
+	$('#add').mouseover(function(){
+		$('#add').removeClass('mdl-shadow--4dp');
+		$('#add').addClass('mdl-shadow--3dp');
+		$('#add').removeClass('mdl-shadow--3dp');
+		$('#add').addClass('mdl-shadow--2dp');
+	});
+	$('#add').mouseleave(function(){
+		$('#add').removeClass('mdl-shadow--2dp');
+		$('#add').addClass('mdl-shadow--3dp');
+		$('#add').removeClass('mdl-shadow--3dp');
+		$('#add').addClass('mdl-shadow--4dp');
+	});
+// ===================================DESIGN END===================================
+
+	$(document).on("click", ".btn_price", function(){
+		var id = $(this).attr("id");
+		$('.price-title').text("SET NEW PRICE");
+		$('#price_submit').text("SET PRICE");
+		$('#price_item_id').val(id);
+
+		var data = price_table.row( $(this).parents('tr') ).data();
+		var old_price = data[3];
+		var name = data[0];
+		$('#price_item_name').val(name);
+		$('#priceTF').get(0).MaterialTextfield.change(convertToInt(old_price));
+		$('#price_modal').modal("show");
+	});
+
+	$('#price_submit').click(function(){
+		var name = $('#price_item_name').val();
+		var id = $('#price_item_id').val();
+		var new_price = $('#item_price').val().trim() + ".00";
+		var title = "Set the new price for "+name+"?";
+		swal({
+			title: title,
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				iyot_iyot_gago = true;
+				firebase.database().ref().child("products").child(id).update({
+					price: new_price
+				});
+					
+			}
+		});
+	});
+
+	$('body').on('click', '.image', (e) => {
+		business_dialog.close();
+		$('#myModal').css("display", "block");
+		var src = $(e.currentTarget).attr("src");
+		// var name = $(e.currentTarget).attr("name");
+		$('#img01').attr("src", src);
+		const imageName = $(e.currentTarget).attr('name') || null;
+		$('#caption').text(imageName);
+	});
+
+	$('#close_haha').click(() => {
+		$('#myModal').css("display", "none");
+		business_dialog.showModal();
+	});
+
+	$('#myModal').click(() => {
+		$('#myModal').css("display", "none");
+		business_dialog.showModal();
+	});
+
+	$('#back_business_dialog').click(() => {
+		business_dialog.close();
+	});
+
+	$('#business_dialog_verify').click(() => {
+		business_dialog.close();
+		swal({
+			title: "Verify this MSME?",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				var uid = $('#hidden_business_id').val();
+				return verifyMSME({uid: uid})
+					.then(result => {
+						const isVerified = result.data;
+						if (isVerified === true) {
+							var data = business_table.row( $('.' + uid) ).data();
+							var button = '<button class="mdl-button mdl-js-button mdl-js-ripple-effect show_details" id="'+uid+'">SHOW</button>';
+							var dataset = [data[0], button, data[2], data[3], "Verified", "Verified"];
+							business_table.row('.' + uid).data(dataset).draw();
+							alert("Successfully verified.");
+						}else {
+							alert(isVerified);
+						}
+					})
+					.catch(error => alert(error));
+			}else {
+				business_dialog.showModal();
+			}
+		});
+	});
+
+	$('#forgot_pass').click(() => {
+		var email = null;
+		dialog.close();
+		swal({
+		  text: 'Enter your email to reset password.',
+		  content: "input",
+		  button: {
+		    text: "Reset",
+		    closeModal: false,
+		  },
+		})
+		.then(name => {
+		  if (!name) throw null;
+		  email = name;
+		  return firebase.auth().sendPasswordResetEmail(name);
+		})
+		.then(() => {
+		  swal({
+		    title: "Password reset email sent to:",
+		    text: email + "\nPlease check your email inbox.",
+		    icon: '/images/dti.png',
+		  })
+		  	.then(() => {
+		  		if (dialog.open == false) {
+		  			dialog.showModal();
+		  		}
+		  		return null;
+		  	});
+		})
+		.catch(err => {
+		  if (err) {
+		    swal("Something went wrong!", err.message, "error")
+		    	.then(() => {
+		    		if (dialog.open == false) {
+		    			dialog.showModal();
+		    		}
+		    		return null;
+		    	});
+		  } else {
+		    swal.stopLoading();
+		    swal.close();
+		  }
+		});
+	});
+
+	$('#new_announcement').click(() => {
+		$('#announcement_form').trigger('reset');
+		$('#announcement_modal').modal('show');		
+	});
+
+	$('#announcement_submit').click(() => {
+		const announcement = $('#announcement_text').val().trim();
+		const title = $('#announcement_title').val().trim();
+		const data = {
+			message: announcement,
+			timestamp: firebase.database.ServerValue.TIMESTAMP,
+			title: title
+		}
+		firebase.database().ref().child('announcement').push().set(data)
+			.then(() => {
+				$('#announcement_modal').modal('hide');
+				return swal("Successfully saved the announcement.");
+			})
+			.catch(error => {
+				return swal(error);
+			});
+	});
+
+	const monthNames = ["January", "February", "March", "April", "May", "June",
+	  "July", "August", "September", "October", "November", "December"
+	];
+
+	firebase.database().ref().child('announcement').on('child_added', snapshot => {
+		const id = snapshot.key;
+		const announcement = snapshot.val();
+		const message = announcement.message;
+		const title = announcement.title;
+		const long = announcement.timestamp;
+		const timestamp = new Date(long);
+		const date = monthNames[timestamp.getMonth()] + " " + timestamp.getDate() + ", " + timestamp.getFullYear();
+
+		$('#announcement_loading').hide();
+
+		var div ='\
+			<div class="review_container" id="'+id+'">\
+				<div class="fixed">\
+					<img class="profile_img" src="images/promotion.png" width="60" height="60" />\
+				</div>\
+			    <div class="flex-item" style="margin-left: 6px;">\
+			    	<h4>'+title+'</h4>\
+			    	<span>'+ date +'</span>\
+			    	<h5>'+message+'</h5>\
+			    </div>\
+			</div>\
+		';
+		$('#announcement_container').append(div); 
+
+	});
+
+	$('body').on('click', '.review_container', e => {
+		const id = $(e.currentTarget).attr('id');
+		swal({
+		  title: "Are you sure?",
+		  text: "Once deleted, you will not be able to recover this announcement!",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+		  	firebase.database().ref().child('announcement').child(id).remove()
+		  		.then(() => {
+		  			swal("Done! Announcement has been deleted!", {
+		  			  icon: "success",
+		  			});
+		  			return $('#' + id).remove();
+		  		})
+		  		.catch(error => {
+		  			swal(error.message, {
+		  			  icon: "warning",
+		  			});
+		  		})
+		  }
+		});
+	});
+
+	$('#new_so').click(() => {
+		$('.check_solid').prop("checked", false);
+		$('#dti_product').modal('show');
+	});
+
+	$('#solid_next').click(() => {
+		if ($('.check_solid:checkbox:checked').length <= 0) {
+		  swal('Please select a product.');
+		  return false;
+		}
+
+		$('#quantity_table_body').html('');
+		if ($('.check_solid:checkbox:checked').length > 0) {
+		  // fetch product
+		  $('.check_solid:checkbox:checked').each(function(){
+		    var price = $(this).attr('product_price');
+		    var name = $(this).attr('product_name');
+		    var id = $(this).attr('product_id');
+		    var onhand = $(this).attr("product_onhand");
+
+		    var input = '<div class="mdl-textfield mdl-js-textfield">\
+							<input class="mdl-textfield__input input_solid" type="number" product_onhand="'+onhand+'" product_name="'+name+'" product_price="'+price+'" id="'+id+'">\
+							<label class="mdl-textfield__label" for="'+id+'">Product Quantity</label>\
+						</div>';
+
+		    // var input = '<input type="number" class="form-control input_solid" product_onhand="'+onhand+'" product_name="'+name+'" product_price="'+price+'" id="'+id+'" placeholder="Product quantity" required>';
+		    $('<tr id="trsolid_'+id+'"><td><center>'+name+'</center></td><td><center>₱ '+price+'</center></td><td><b>'+onhand+'</b></td><td><center>'+input+'</center></td><td><center><button type="button" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored remove_solid" id="'+id+'"><i class="material-icons">remove</i></button></center></td></tr>').appendTo($('#quantity_table_body'));
+
+		    componentHandler.upgradeDom();
+		  });
+		}else {
+		  $('<tr><td colspan="5"><center><i><h5>No Product Selected</h5></i></center></td></tr>').appendTo($('#quantity_table_body'));
+		}
+
+		$('#dti_product').modal('hide');
+		$('#quantity_modal').modal('show');
+	});
+
+	$('#quantity_back').click(() => {
+		$('#quantity_modal').modal('hide');
+		$('#dti_product').modal('show');
+	});
+
+	$('#solid_product_back').click(() => {
+		$('#dti_product').modal('hide');
+	});
+
+	$(document).on("click", '.remove_solid', function(){
+	  var id = $(this).attr("id");
+	  if (confirm("Remove this product?")) {
+	    $('#trsolid_'+id).remove();
+	  }
+	});
+
+	var sales_order_final = null;
+	var key = null;
+
+	$('#next_quantity').click(() => {
+
+		var isInvalid = false;
+		$('.input_solid').each(function(){
+		  var available = $(this).attr("product_onhand");
+		  if ($(this).val().trim() == "" || parseInt($(this).val()) <= 0 || parseInt($(this).val()) > available) {
+		    isInvalid = true;
+		  }
+		});
+		if ($('.input_solid').length <= 0) {
+			swal("It looks like you didn't pick any product.");
+			return false;
+		}else if (isInvalid) {
+		  swal("Some of the products is empty or invalid quantity.");
+		  return false;
+		}
+
+		var iyot_total = 0;
+		$('#finish_body').html('');
+
+		const productIds = [];
+		const productQuantities = [];
+		const productPrices = [];
+		const productNames = [];
+
+		if ($('.input_solid').length > 0) {
+		  // fetch input solid
+		  $('.input_solid').each(function(){
+		    var quantity = $(this).val();
+		    var product_id = $(this).attr('id');
+		    var name = $(this).attr("product_name");
+		    var price = $(this).attr("product_price");
+		    var total = parseInt(quantity) * parseInt(price);
+
+		    productIds.push(product_id);
+		    productQuantities.push(quantity);
+		    productPrices.push(price);
+		    productNames.push(name);
+
+		    iyot_total = iyot_total + total;
+		    $('<tr><td><center>'+name+'</center></td><td><center>₱ '+price+'</center></td><td><center>'+quantity+'</center></td><td><center>₱ '+numberWithCommas(total)+'.00</center></td></tr>').appendTo($('#finish_body'));
+		  });
+		}else {
+		  $('<tr><td colspan="4"><center><i><h5>No Product Selected</h5></i></center></td></tr>').appendTo($('#finish_body'));
+		}
+
+		var vat_charge;
+		var vat = 0;
+		vat = iyot_total * 0.12;
+		vat_charge = '₱ '+numberWithCommas(toInteger(vat))+'.00 (12%)';
+
+		$('<tr><td colspan="4"><hr></td></tr>').appendTo('#finish_body');
+		$('<tr><td colspan="2"></td><td><center><h4>Total Amount:</h4></center></td><td><center><h4>₱ '+numberWithCommas(iyot_total)+'.00</center></h4></td></tr>').appendTo('#finish_body');
+		$('<tr><td colspan="2"></td><td><center><h4>VAT Charge:</h4></center></td><td><center><h4>'+vat_charge+'</center></h4></td></tr>').appendTo('#finish_body');
+		$('<tr><td colspan="2"></td><td><center><h3>Grandtotal:</h3></center></td><td><center><h3>₱ '+numberWithCommas(toInteger(iyot_total + (vat)))+'.00</center></h3></td></tr>').appendTo('#finish_body');
+		$('<tr><td colspan="2"></td><td><center><h3>Cash:</h3></center></td><td><center><input type="number" value="0" id="cash" placeholder="Amount" /></center></h3></td></tr>').appendTo('#finish_body');
+		$('<tr><td colspan="2"></td><td><center><h4>Change:</h4></center></td><td><center><span id="change"></span></center></h3></td></tr>').appendTo('#finish_body');
+
+		key = firebase.database().ref().push().key;
+		$('#so_future_id').text(getProperIdNumber(key, productNames[0]));
+		$('#finish_modal').modal("show");
+		$('#quantity_modal').modal("hide");
+
+		const grandtotal = toInteger(iyot_total + (vat));
+		
+		sales_order_final = {
+			order_date: firebase.database.ServerValue.TIMESTAMP,
+			product_ids: productIds,
+			product_quantities: productQuantities,
+			product_prices: productPrices,
+			product_names: productNames,
+			total_price: grandtotal,
+			timestamp: firebase.database.ServerValue.TIMESTAMP
+		};
+
+	});
+
+	$('body').on('keyup', '#cash', e => {
+		const grandtotal = sales_order_final.total_price;
+		const cash = $('#cash').val().trim();
+		const change = cash - grandtotal;
+		$('#change').text(change);
+	});
+
+	$('#finish_back').click(function(){
+	  $('#quantity_modal').modal("show");
+	  $('#finish_modal').modal("hide");
+	});
+
+	$('#finish_next').click(function(){
+	  if (confirm("Are you sure to create this Sale Order?")) {
+
+	  	const grandtotal = parseInt(sales_order_final.total_price);
+		const cash = parseInt($('#cash').val().trim());
+		console.log(grandtotal);
+		console.log(cash);
+		const change = cash - grandtotal;
+		if (change < 0 || change === null || change === undefined) {
+			swal('Please enter a valid amount of cash.');
+			return false;
+		}
+
+	  	for (i = 0; i < sales_order_final.product_ids.length; i++){
+	  		
+	  		var productId = sales_order_final.product_ids[i];
+	  		var quantity = sales_order_final.product_quantities[i];	// total quantity
+
+	  		firebase.database().ref().child("products").child(productId).once('value', function(snap){
+	  			var stock = snap.child("stock").val();
+	  			var demand = snap.child("demand").val();
+
+	  			var newQuantity = parseInt(stock) - parseInt(quantity);	// total quantity(in db) - total quantity of product in cart
+	  			var newDemand = parseInt(demand) + parseInt(quantity);
+	  			
+	  			firebase.database().ref().child("products").child(productId).update({
+	  				stock: newQuantity,
+	  				demand: newDemand
+	  			});
+
+	  		});
+	  			  					
+	  	}
+	  	
+	  	firebase.database().ref().child('sales_order').child(key).set(sales_order_final)
+	  		.then(() => {
+	  			$('#finish_modal').modal("hide");
+	  			swal("Good job!", "Successfully created sales order!", "success");
+	  		})
+	  		.catch(error => swal(error.message));
+	  }
+	});
+
+	$('body').on('click', '.view_reciept', e => {
+		const productIds = $(e.currentTarget).attr('productIds').split(",");
+		const productPrices = $(e.currentTarget).attr('productPrices').split(",");
+		const productQuantities = $(e.currentTarget).attr('productQuantities').split(",");
+		const productNames = $(e.currentTarget).attr('productNames').split(",");
+		const key = $(e.currentTarget).attr('id');
+
+		var takking_total = 0;
+
+		$('#print_body').html('');
+		if (productIds.length >= 1) {
+		  for (var i = 0; i < productIds.length; i++){
+		    var name = productNames[i];
+		    var price = productPrices[i];
+		    var quantity = productQuantities[i];
+
+		    var total = parseInt(price) * parseInt(quantity);
+		    takking_total = takking_total + total;
+
+		    $('<tr><td><center>'+name+'</center></td><td><center>₱ '+numberWithCommas(price)+'.00</center></td><td><center>'+quantity+'</center></td><td><center>₱ '+numberWithCommas(total)+'.00</center></td></tr>').appendTo('#print_body');
+		  }
+		}else {
+		  $('<tr><td colspan="4"><i><h5>No Product</h5></i></td></tr>').appendTo("#print_body");
+		}
+
+		$('#so_id').text(getProperIdNumber(key, productNames[0]));
+
+		var iyot_tayo_total = (takking_total * 0.12) + takking_total;
+
+		var vat_charge;
+		vat_charge = "₱ " + numberWithCommas(toInteger(takking_total * 0.12)) + ".00";
+		
+		console.log(takking_total);
+		$('<tr><td colspan="4"><hr></td></tr>').appendTo('#print_body');
+		$('<tr><td colspan="2"></td><td><center><h4>Total Amount:</h4></center></td><td><center><h4>₱ '+numberWithCommas(takking_total)+'.00</center></h4></td></tr>').appendTo('#print_body');
+		$('<tr><td colspan="2"></td><td><center><h4>VAT Charge:</h4></center></td><td><center><h4>'+vat_charge+'</center></h4></td></tr>').appendTo('#print_body');
+		$('<tr><td colspan="2"></td><td><center><h3>Grandtotal:</h3></center></td><td><center><h3>₱ '+numberWithCommas(toInteger(iyot_tayo_total))+'.00</center></h3></td></tr>').appendTo('#print_body');
+
+		$('#print_modal').modal('show');
+
+	});
+
+	$('#print_button').click(() => {
+		$('#receiptTable').css({"width": "100%"});
+		var divToPrint=document.getElementById("receiptTable");
+		newWin= window.open("");
+		newWin.document.write(divToPrint.outerHTML);
+		newWin.print();
+	});
+
+});
+</script>
